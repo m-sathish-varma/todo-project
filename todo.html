@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>TODO</title>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <link rel = "stylesheet" href = "todo.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class = "container">
+            <div class = "top-header">
+                <span class = "dotted-icon">
+                    <i class = "fa fa-th"></i>
+                </span>
+                <span class = "todo-text"> To Do </span>
+                <span class = "search"> 
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type = "text" placeholder = "Search"/>
+                </span>
+                
+            </div>
+            <div class = "content-info">
+                <div class = "left-column" id = "left-column">
+                    <div class = "bars-icon">
+                        <input type = "hidden" id="option-value" value = "openMenu"/>
+                        <button id = "menu-icon">
+                            <div class = "menu-icon"> </div>
+                            <div class = "menu-icon"> </div>
+                            <div class = "menu-icon"> </div>
+                        </button>
+                    </div>
+                    <ul id = "side-menu">
+                        <li>
+                        <div id = "sun-icon">
+                            <a href = "">&#9728;</a>
+                            <span class = "menu-name">My Day</span>
+                        </div>
+                        </li>
+                        <li>
+                        <div id = "star-icon">
+                            <a href = "">
+                                 <i class = "fa fa-star-o"></i>
+                            </a>
+                            <span class = "menu-name">Important</span>
+                        </div>
+                        </li>
+                        <li>
+                        <div id = "calendar-icon">
+                            <a href = "">
+                                <i class = "fa fa-calendar-check-o"></i>
+                            </a>
+                           <span class = "menu-name">Planned</span>
+                        </div>
+                        </li>
+                        <li>
+                        <div id = "user-icon">
+                            <a href = "">
+                                <i class = "fa fa-user"></i>
+                            </a>
+                            <span class = "menu-name">Assigned To Me</span>
+                        </div>
+                        </li>
+                        <li>
+                        <div id = "flag-icon">
+                            <a href = "">
+                                <i class="fa fa-flag" aria-hidden="true"></i>
+                            </a> 
+                            <span class = "menu-name">Flagged Email</span>
+                        </div>
+                        </li>
+                        <li>
+                        <div id = "home-icon">
+                            <a href = "">
+                                <i class="fa fa-home" aria-hidden="true"></i> 
+                            </a>
+                            <span class = "menu-name">Tasks</span>
+                        </div>
+                        </li>
+                        <div id ="created-list">
+                        </div>
+                    </ul>
+                    <div id = "plus-icon">
+                        <span id = "plus-symbol">+</span>
+                        <input type = "text" id = "new-list" placeholder = "New list" class = "menu-name"/>
+                    </div>
+                </div>
+                <div class = "middle-column" id = "middle-column">
+                    <div div class = "task-bar-container">
+                        <div class = "task-bar">
+                            <span id = "task-name"> Task </span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <button class = "share-button">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            <span id = "share-text">Share</span>
+                        </button>
+                        <button class = "sort-button">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span id = "sort-text">sort</span>
+                        </button>
+                    </div>
+                    <div id = "sub-task-list"> </div>
+                    <div class = "add-task-list">
+                        <div id = "add-task"> 
+                            <span id = "plus">+</span>
+                            <input type = "text" id = "new-task" placeholder = "Add task"/>
+                        </div>
+                    </div>
+                </div>
+                <div class = "right-column" id = "right-column">
+                    <div class = "sub-task-info">
+                        <div id = "sub-task">
+                            <input type = "checkbox"/>
+                            <div id = "sub-task-name">hiii</div>
+                            <i class = "fa fa-star-o"></i>
+                        </div>
+                        <div id = "steps-list">
+                        </div>
+                        <div id = "add-steps">
+                            <span id = "add-steps-symbol">+</span>
+                            <input type = "text" id = "new-step" placeholder = "Add steps"/>
+                        </div>
+                        <div id = "add-to-my-day">
+                            &#9728;
+                            <span id = "add-my-day-text"> Add My Day </span>
+                        </div>
+                        <div id = "remainder-me">
+
+                        </div>
+                        <div id = "add-due-date">
+
+                        </div>
+                        <div id = "repeat">
+
+                        </div>
+                        <div id = "add-file">
+
+                        </div>
+                        <div id = "add-note">
+
+                        </div>
+                    </div>
+                    <div class = "taskCloseInfo">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src = "todo.js"></script>
+    </body>
+</html>
+            
