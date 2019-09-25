@@ -3,6 +3,7 @@
         <title>TODO</title>
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link rel = "stylesheet" href = "todo.css">
+        <link rel = "stylesheet" href = "checkbox.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -29,6 +30,7 @@
                             <div class = "menu-icon"> </div>
                         </button>
                     </div>
+                    <div class = "scroll-bar">
                     <ul id = "side-menu">
                         <li>
                         <div id = "sun-icon">
@@ -79,6 +81,7 @@
                         <div id ="created-list">
                         </div>
                     </ul>
+                    </div>
                     <div id = "plus-icon">
                         <span id = "plus-symbol">+</span>
                         <input type = "text" id = "new-list" placeholder = "New list" class = "menu-name"/>
@@ -103,6 +106,10 @@
                     <div class = "add-task-list">
                         <div id = "add-task"> 
                             <span id = "plus">+</span>
+                            <div class = "check-box-container">
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                            </div>
                             <input type = "text" id = "new-task" placeholder = "Add task"/>
                         </div>
                     </div>
@@ -111,7 +118,7 @@
                     <div class = "sub-task-info">
                         <div id = "sub-task">
                             <input type = "checkbox"/>
-                            <div id = "sub-task-name">hiii</div>
+                            <div id = "sub-task-name"></div>
                             <i class = "fa fa-star-o"></i>
                         </div>
                         <div id = "steps-list">
@@ -122,22 +129,26 @@
                         </div>
                         <div id = "add-to-my-day">
                             &#9728;
-                            <span id = "add-my-day-text"> Add My Day </span>
+                            <span id = "add-my-day-text"> Add to my day </span>
                         </div>
                         <div id = "remainder-me">
-
+                            <i class="fa fa-bell"></i>
+                            <span id = "remainder-text"> Remind me </span>
                         </div>
                         <div id = "add-due-date">
-
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <span id = "due-date-text"> Add due date
                         </div>
                         <div id = "repeat">
-
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                            <span id = "repeat-text"> Repeat </span>
                         </div>
                         <div id = "add-file">
-
+                            <i class="fa fa-paperclip"></i>
+                            <span id = "add-file-text">Add file</span>
                         </div>
                         <div id = "add-note">
-
+                            <div id = "add-note-content" contentEditable=true placeholder="Add note"></div>
                         </div>
                     </div>
                     <div class = "taskCloseInfo">

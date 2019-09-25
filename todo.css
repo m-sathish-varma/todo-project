@@ -1,7 +1,11 @@
+@font-face {
+font-family: "segoe";
+src: url("Segoe UI.woff");
+}
+
 body {
     margin: 0;
-    font-family:sans-serif;
-    po
+    font-family:segoe;
 }
 
 .container {
@@ -61,6 +65,8 @@ body {
     width: 3.8%;
     background-color: #f4f4f4;
     border-right: 1px solid #eaeaea;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .left-column .menu-icon {
@@ -93,6 +99,7 @@ body {
 #side-menu {
     margin-top: 0px;
     padding-left: 1px;
+    overflow-x:hidden;
 }
 
 .left-column #side-menu #sun-icon {
@@ -241,14 +248,20 @@ body {
 }
 
 .menu-name {
+    opacity:0.7;
     margin-left: 12px;
     display:none;
+    font-color:#35404a;
+    font-size:0.8rem
 }
 
 .middle-column {
-    width: 72%;
+    flex: 1;
+    width: 95%;
     border-right: 1px solid #eaeaea;
     background-color: white;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .middle-column .task-bar-container {
@@ -269,8 +282,8 @@ body {
 .middle-column .task-bar-container .sort-button {
     top: 30%;
     position: relative;
-    width: 6.5%;
-    height: 46%;
+    width: 58px;
+    height: 34px;
     background: transparent;
     border: none;
     outline: none;
@@ -347,14 +360,22 @@ body {
     border: none;
     border-bottom: 1px solid #eaeaea;
     width: 96%;
-    margin-left: 2%;
+    padding-left: 4.5%;
     display:flex;
+    font-size:0.8rem;
     align-items:center;
 }
 
+.new-task .fa-circle {
+    font-size: 19px;
+}
+
 .right-column {
-    background-color:white;
-    flex-shrink:0;
+    background-color:#f5f5f5;
+    display:none;
+    width: 27%;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 #checkbox-round {
@@ -371,7 +392,7 @@ body {
 
 .right-column .sub-task-info {
     height: 95.5%;
-    padding: 0 0.5rem 0 0.5rem;
+    padding: 0 0.5rem 0 0.7rem;
     margin-top: 0.6rem;
 }
 
@@ -416,6 +437,7 @@ body {
     background-color: #f4f4f4;
     padding-left: 1rem;
     width: 20rem;
+    margin-top: 0.5rem;
     height: 2rem;
 }
 
@@ -427,15 +449,102 @@ body {
     padding-left: 1rem;
     color: #767678;
     margin-top: 1rem;
+    font-size:0.8rem;
 }
 
 .right-column .sub-task-info #add-my-day-text {
     padding-left: 1rem;
 }
 
+.right-column .sub-task-info #remainder-me {
+    height: 9%;
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    border: 1px solid #eaeaea;
+    color: #767678;
+    padding-left: 1rem;
+    font-size:0.8rem;
+}
+
+.right-column .sub-task-info #remainder-me #remainder-text{
+    padding-left: 1rem;
+}
+
+.right-column .sub-task-info #add-due-date {
+    height: 8.5%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eaeaea;
+    color: #767678;
+    padding-left: 1rem;
+    border-top: none;
+    font-size:0.8rem;
+}
+
+.right-column .sub-task-info #due-date-text {
+    padding-left: 1rem;
+}
+
+.right-column .sub-task-info #repeat {
+    height: 8.5%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eaeaea;
+    color: #767678;
+    padding-left: 1rem;
+    border-top: none;
+    font-size:0.8rem;
+}
+
+.right-column .sub-task-info #repeat-text {
+    padding-left: 1rem;
+}
+
+.right-column .sub-task-info #add-file {
+    height: 8%;
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    border: 1px solid #eaeaea;
+    color: #767678;
+    padding-left: 1rem;
+    font-size:0.8rem;
+}
+
+.right-column .sub-task-info #add-file .fa-paperclip {
+    transform:rotate(45deg);
+}
+
+.right-column .sub-task-info #add-file-text {
+    padding-left: 1rem;
+}
+
+.right-column .sub-task-info #add-note {
+    border: 1px solid #eaeaea;
+    color: #767678;
+    margin-top: 0.9rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.right-column .sub-task-info #add-note-content {
+    color: #767678;
+    height: 3rem;
+    width: 22rem;
+    outline: none;
+    font-size:0.8rem;
+}
+
+[contenteditable=true]:empty::before {
+  content: attr(placeholder);
+}
+
 .new-step {
     height: 7%;
     display: flex;
     align-items: center;
-    padding-left: 3rem;
+    padding-left: 1.2rem;
 }
