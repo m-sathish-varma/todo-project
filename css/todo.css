@@ -1,6 +1,6 @@
 @font-face {
 font-family: "segoe";
-src: url("Segoe UI.woff");
+src: url("/font/Segoe UI.woff");
 }
 
 body {
@@ -404,7 +404,7 @@ body {
     width: 1.3rem;
     height: 2rem;
     margin-top: 0.9rem;
-    background-image:url("verified.svg");
+    background-image:url("/images/verified.svg");
 }
 
 .strike {
@@ -416,7 +416,7 @@ body {
     margin-left: 0.9rem;
     background-size:contain;
     background-repeat:no-repeat;
-    background-image:url("verified.svg");
+    background-image:url("/images/verified.svg");
 }
 
 .strike-image {
@@ -428,7 +428,7 @@ body {
     margin-left: 0.9rem;
     background-size:contain;
     background-repeat:no-repeat;
-    background-image:url("check.svg");
+    background-image:url("/images/check.svg");
 }
 
 .right-column .sub-task-info #sub-task input {

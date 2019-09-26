@@ -214,12 +214,12 @@ function changeSubTaskInRight(isStriked) {
     let subStriked = subTaskName.innerHTML.strike();
     if (true == isStriked) {
         subTaskImage.style.backgroundRepeat = "no-repeat";
-        subTaskImage.style.backgroundImage = "url('check.svg')";
+        subTaskImage.style.backgroundImage = "url('/images/check.svg')";
         subTaskImage.style.backgroundSize = "contain";
         subTaskName.innerHTML = subStriked;
     } else {
         subTaskImage.style.backgroundRepeat = "no-repeat";
-        subTaskImage.style.backgroundImage = "url('verified.svg')";
+        subTaskImage.style.backgroundImage = "url('/images/verified.svg')";
         subTaskImage.style.backgroundSize = "contain";
         subTaskName.innerHTML = activeSubTask.subTaskName;
     }
