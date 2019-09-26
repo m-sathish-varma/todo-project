@@ -9,15 +9,18 @@
     <body>
         <div class = "container">
             <div class = "top-header">
-                <span class = "dotted-icon">
-                    <i class = "fa fa-th"></i>
+                <span class = "dotted-icon"></span>
+                <span class = "todo-text"> 
+                    <b> To Do </b> 
                 </span>
-                <span class = "todo-text"> To Do </span>
+                <span id = "search-icon"></span>
                 <span class = "search"> 
-                    <i class="fa fa-search" aria-hidden="true"></i>
                     <input type = "text" placeholder = "Search"/>
                 </span>
-                
+                <span id = "settings-icon"></span>
+                <span id = "question-icon"></span>
+                <span id = "mic-icon"></span>
+                <span id = "user-profile-icon"></span>
             </div>
             <div class = "content-info">
                 <div class = "left-column" id = "left-column">
@@ -33,47 +36,37 @@
                     <ul id = "side-menu">
                         <li>
                         <div id = "sun-icon">
-                            <a href = "">&#9728;</a>
+                            <span id = "sun-symbol"></span>
                             <span class = "menu-name">My Day</span>
                         </div>
                         </li>
                         <li>
                         <div id = "star-icon">
-                            <a href = "">
-                                 <i class = "fa fa-star-o"></i>
-                            </a>
+                            <span id = "star-symbol"></span>
                             <span class = "menu-name">Important</span>
                         </div>
                         </li>
                         <li>
                         <div id = "calendar-icon">
-                            <a href = "">
-                                <i class = "fa fa-calendar-check-o"></i>
-                            </a>
+                            <span id = "calendar-symbol"></span>
                            <span class = "menu-name">Planned</span>
                         </div>
                         </li>
                         <li>
                         <div id = "user-icon">
-                            <a href = "">
-                                <i class = "fa fa-user"></i>
-                            </a>
+                            <span id = "user-symbol"></span>
                             <span class = "menu-name">Assigned To Me</span>
                         </div>
                         </li>
                         <li>
                         <div id = "flag-icon">
-                            <a href = "">
-                                <i class="fa fa-flag" aria-hidden="true"></i>
-                            </a> 
+                            <span id = "flag-symbol"></span>
                             <span class = "menu-name">Flagged Email</span>
                         </div>
                         </li>
                         <li>
                         <div id = "home-icon">
-                            <a href = "">
-                                <i class="fa fa-home" aria-hidden="true"></i> 
-                            </a>
+                            <span id = "home-symbol"></span>
                             <span class = "menu-name">Tasks</span>
                         </div>
                         </li>
@@ -82,7 +75,7 @@
                     </ul>
                     </div>
                     <div id = "plus-icon">
-                        <span id = "plus-symbol">+</span>
+                        <span id = "plus-symbol"></span>
                         <input type = "text" id = "new-list" placeholder = "New list" class = "menu-name"/>
                     </div>
                 </div>
@@ -152,7 +145,9 @@
                         </div>
                     </div>
                     <div class = "taskCloseInfo">
-                        
+                        <span id = "close-button"></span>
+                        <span id ="date"></span>
+                        <span id = "delete-sub-task"></span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 @font-face {
 font-family: "segoe";
-src: url("/font/Segoe UI.woff");
+src: url("../font/Segoe UI.woff");
 }
 
 body {
@@ -13,18 +13,67 @@ body {
     height:100%;
 }
 
-.top-header .todo-text {
-    line-height:48px;
-    color:white;
-    margin-left: 16px;
+.container .top-header #settings-icon {
+    position: relative;
+    left: 20.3rem;
+    top: 1rem;
+    width: 1rem;
+    height: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/settings.svg");
 }
 
-.top-header .fa-th {
-    color:white;
-    margin-left: 20px;
+.container .top-header #question-icon {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: 22.3rem;
+    top: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image:url("../images/question.svg");
+}
+
+.container .top-header #mic-icon {
+    position: relative;
+    width: 1.2rem;
+    height: 1.2rem;
+    left: 24.2rem;
+    top: 0.8rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image:url("../images/mic.svg");
+}
+
+.container .top-header #user-profile-icon {
+    position: relative;
+    width: 1.8rem;
+    height: 2.2rem;
+    left: 25.7rem;
+    top: 0.7rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image:url("../images/userprofile.svg");
+}
+
+.top-header .todo-text {
+    line-height: 3.1rem;
+    color: white;
+    margin-left: 0.5rem;
+}
+
+.top-header .dotted-icon {
+    height: 1rem;
+    width: 1rem;
+    margin: 1.1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/menu-icon.svg");
 }
 
 .top-header {
+    display:flex;
     color:black;
     height:48px;
     background-color:#3978d6;
@@ -35,14 +84,23 @@ body {
     color: #5db5f8;
 }
 
-.top-header .search .fa-search {
+.top-header #search-icon {
+    width: 1rem;
+    left: 20.5rem;
+    top: 1rem;
     position: relative;
-    left: 23px;
+    height: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/searchicon.svg");
 }
 
 .top-header .search input {
-    width: 30.2%;
-    padding-left: 2.5%;
+    width: 25rem;
+    margin-top: 0.47rem;
+    margin-left: 0.4rem;
+    padding-top: 0.3rem;
+    padding-left: 9.5%;
     cursor: pointer;
     height: 67%;
     border-radius: 3px;
@@ -97,9 +155,9 @@ body {
 }
 
 #side-menu {
-    margin-top: 0px;
+    margin-top: -3px;
     padding-left: 1px;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .left-column #side-menu #sun-icon {
@@ -116,9 +174,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #sun-icon a {
-    color:#767678;
-    text-decoration:none;
+.left-column #side-menu #sun-icon #sun-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/sun.svg");
 }
 
 .left-column #side-menu #flag-icon {
@@ -134,9 +198,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #flag-icon a {
-    color:#c23732;
-    text-decoration:none;
+.left-column #side-menu #flag-icon #flag-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/searchicon.svg");
 }
 
 .left-column #side-menu #star-icon {
@@ -152,9 +222,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #star-icon a {
-    color:#767678;
-    text-decoration:none;
+.left-column #side-menu #star-icon #star-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/star.svg");
 }
 
 .left-column #side-menu #calendar-icon {
@@ -170,9 +246,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #calendar-icon a {
-    color:#767678;
-    text-decoration:none;
+.left-column #side-menu #calendar-icon #calendar-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/calendar.svg");
 }
 
 .left-column #side-menu #user-icon {
@@ -188,9 +270,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #user-icon a {
-    color:#5ca52e;
-    text-decoration:none;
+.left-column #side-menu #user-icon #user-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/user.svg");
 }
 
 .left-column #side-menu #home-icon {
@@ -206,9 +294,15 @@ body {
     cursor:pointer;
 }
 
-.left-column #side-menu #home-icon a {
-    color:#4174e8;
-    text-decoration:none;
+.left-column #side-menu #home-icon #home-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/home.svg");
 }
 
 .left-column  #plus-icon {
@@ -219,8 +313,14 @@ body {
 }
 
 .left-column #plus-icon #plus-symbol{
-    font-size: 30px;
-    color:#4174e8;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/home.svg");
 }
 
 .left-column #plus-icon #plus-symbol:hover {
@@ -234,10 +334,10 @@ body {
 }
 
 .left-column #plus-icon input {
-    border:none;
-    outline-color:#f4f4f4;
-    background-color:#f4f4f4;
-    margin-top: 0.5rem;
+    border: none;
+    outline-color: #f4f4f4;
+    background-color: #f4f4f4;
+    margin-bottom: 1rem;
 }
 
 .left-column #plus-icon input:hover {
@@ -249,11 +349,12 @@ body {
 }
 
 .menu-name {
-    opacity:0.7;
+    padding-bottom: 0.5rem;
+    opacity: 0.7;
     margin-left: 12px;
-    display:none;
-    color:#35404a;
-    font-size:0.8rem
+    display: none;
+    color: #35404a;
+    font-size: 0.8rem;
 }
 
 .middle-column {
@@ -385,9 +486,9 @@ body {
 }
 
 .right-column .sub-task-info {
-    height: 95.5%;
+    height: 92.5%;
     padding: 0 0.5rem 0 0.7rem;
-    margin-top: 0.6rem;
+    margin-top: 0.8rem;
 }
 
 .right-column .sub-task-info #sub-task {
@@ -404,7 +505,7 @@ body {
     width: 1.3rem;
     height: 2rem;
     margin-top: 0.9rem;
-    background-image:url("/images/verified.svg");
+    background-image:url("../images/verified.svg");
 }
 
 .strike {
@@ -416,7 +517,7 @@ body {
     margin-left: 0.9rem;
     background-size:contain;
     background-repeat:no-repeat;
-    background-image:url("/images/verified.svg");
+    background-image:url("../images/verified.svg");
 }
 
 .strike-image {
@@ -428,7 +529,7 @@ body {
     margin-left: 0.9rem;
     background-size:contain;
     background-repeat:no-repeat;
-    background-image:url("/images/check.svg");
+    background-image:url("../images/check.svg");
 }
 
 .right-column .sub-task-info #sub-task input {
@@ -569,6 +670,42 @@ body {
 
 [contenteditable=true]:empty::before {
   content: attr(placeholder);
+}
+
+.right-column .taskCloseInfo {
+    display: flex;
+    width: 37rem;
+    background-color: white;
+    height: 2rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.right-column .taskCloseInfo #close-button {
+    width: 1.5rem;
+    position: relative;
+    height: 1.3rem;
+    top: 0.5rem;
+    left: 1rem;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/close-pane.svg);
+}
+
+.right-column .taskCloseInfo #date {
+    width: 25rem;
+    margin-left: 2rem;
+}
+
+.right-column .taskCloseInfo #delete-sub-task {
+    width: 25rem;
+    position: relative;
+    height: 1rem;
+    top: 0.7rem;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/trash.svg);
 }
 
 .new-step {
