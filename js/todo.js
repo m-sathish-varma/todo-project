@@ -115,7 +115,7 @@ function displaySubTask(subTask, index) {
     }
     iconSpan.id = subTask.checkId;
     iconSpan.addEventListener("click", function(){
-        strikeSubTask();
+        strikeSubTask(this.id);
     });
     newDiv.appendChild(iconSpan);
     taskSpan.style.marginLeft = "4%";
@@ -165,7 +165,7 @@ function addNewSubTask() {
     taskSpan.innerHTML = newTask.value;
     iconSpan.setAttribute("class", "strike");
     iconSpan.id = getId();
-    iconSpan.addEventListener("click", function () { strikeSubTask() });
+    iconSpan.addEventListener("click", function () { strikeSubTask(this.id) });
     newDiv.appendChild(iconSpan);
     taskSpan.style.marginLeft = "3%";
     newDiv.style.cursor = "pointer";
@@ -189,12 +189,13 @@ function addNewSubTask() {
     console.log(activeSubTask)
 }
 
-function strikeSubTask() {
-    let imageSpan = getElementById(activeSubTask.id).getElementsByTagName("span")[0];
-    let subTask = getElementById(activeSubTask.id).getElementsByTagName("span")[1];
+function strikeSubTask(checkId) {
+    let selectedSubTask = getSubTaskByCheckId(checkId);
+    console.log(checkId);
+    let imageSpan = getElementById(selectedSubTask.id).getElementsByTagName("span")[0];
+    let subTask = getElementById(selectedSubTask.id).getElementsByTagName("span")[1];
     let strikedName = subTask.innerHTML.strike();
     let isStriked = getIsStriked();
-    console.log(isStriked);
     if (true == isStriked) {
         imageSpan.setAttribute("class", "strike-image");
         subTask.innerHTML = strikedName;
@@ -202,10 +203,24 @@ function strikeSubTask() {
         changeSubTaskInRight(true);
     } else {
         imageSpan.setAttribute("class", "strike");
-        subTask.innerHTML = activeSubTask.subTaskName;
+        subTask.innerHTML = selectedSubTask.subTaskName;
         subTask.style.height = "4rem";
         changeSubTaskInRight(false);
     }
+}
+
+function getSubTaskByCheckId(checkId) {
+    var selectedTask;
+    for (let i in tasks) {
+        var subtask = tasks[i].subTask;
+        for (let j in subtask) {
+            if (subTaskId == subtask[j].checkId) {
+                selectedSubTask = subtask[j];
+                console.log(selectedSubTask);
+            }
+        }
+    }
+    return selectedSubTask;
 }
 
 function changeSubTaskInRight(isStriked) {
