@@ -51,39 +51,83 @@ document.getElementById("new-list").addEventListener("keyup", function(event){
 });
 
 function addNewList(inputValue) {
-       let subTask = new Array();
-       let right = getElementById("right-column");
-       let tasksInformation = new Array();
-       let sideMenuContent = getElementById("created-list");
-       let newDiv = document.createElement("div");
-       let newSpan = document.createElement("span");
-       right.style.display = "none";
-       right.style.transition = "0.3s";
-       newDiv.style.display = "flex";
-       newDiv.style.color = "#3d71e4";
-       newDiv.innerHTML = "<i class = 'fa fa-list-ul'></i>";
-       newSpan.className = "menu-name";
-       newDiv.id = getId();
-       tasksInformation.id = newDiv.id;
-       tasksInformation.subTask = subTask;
-       newSpan.style.display = "block";
-       newSpan.style.color = "black";
-       newSpan.innerHTML = checkTaskTitle(inputValue.value);
-       tasksInformation.taskName = newSpan.innerHTML;
-       newDiv.appendChild(newSpan);
-       newDiv.style.height = "37px";
-       newDiv.style.paddingLeft = "17px";
-       newDiv.style.cursor = "pointer";
-       newDiv.style.alignItems = "center";
-       newDiv.addEventListener("click", function(){
-           var taskName = getElementById("task-name");
-           taskName.innerHTML = newSpan.innerHTML;
-           displayTaskInfo(this.id);
-       });
-       sideMenuContent.appendChild(newDiv);
-       displayTaskName(newSpan.innerHTML);
-       inputValue.value = "";
-       tasks.push(tasksInformation);
+    let subTask = new Array();
+    let right = getElementById("right-column");
+    let tasksInformation = new Array();
+    let sideMenuContent = getElementById("created-list");
+    let newDiv = document.createElement("div");
+    let newSpan = document.createElement("span");
+    right.style.display = "none";
+    right.style.transition = "0.3s";
+    newDiv.style.display = "flex";
+    newDiv.style.color = "#3d71e4";
+    newDiv.innerHTML = "<i class = 'fa fa-list-ul'></i>";
+    newSpan.className = "menu-name";
+    newDiv.id = getId();
+    tasksInformation.id = newDiv.id;
+    tasksInformation.subTask = subTask;
+    newSpan.style.display = "block";
+    newSpan.style.color = "black";
+    newSpan.innerHTML = checkTaskTitle(inputValue.value);
+    tasksInformation.taskName = newSpan.innerHTML;
+    newDiv.appendChild(newSpan);
+    newDiv.style.height = "37px";
+    newDiv.style.paddingLeft = "17px";
+    newDiv.style.cursor = "pointer";
+    newDiv.style.alignItems = "center";
+    newDiv.addEventListener("click", function(){
+        var taskName = getElementById("task-name");
+        taskName.innerHTML = newSpan.innerHTML;
+        displayTaskInfo(this.id);
+    });
+    sideMenuContent.appendChild(newDiv);
+    displayTaskName(newSpan.innerHTML);
+    inputValue.value = "";
+    tasks.push(tasksInformation);
+}
+
+function displayTaskInfo(idValue) {
+    let right = getElementById("right-column");
+    var taskSelected = tasks.find(function(event) {
+        return event.id == idValue;
+    });
+    right.style.display = "none";
+    right.style.transition = "0.3s";
+    console.log(taskSelected);
+    let subTaskInfo = taskSelected.subTask;
+    let subTaskList = getElementById("sub-task-list");
+    subTaskList.innerHTML = "";
+    subTaskInfo.forEach(displaySubTask);
+}
+
+
+function displaySubTask(subTask, index) {
+    let subTaskList = getElementById("sub-task-list");
+    let newDiv = document.createElement("div");
+    let taskSpan = document.createElement("span");
+    let iconSpan = document.createElement("span");
+    if (true == subTask.isStriked) {
+        iconSpan.setAttribute("class", "strike-image");
+        taskSpan.innerHTML = subTask.subTaskName.strike();
+    } else {
+        iconSpan.setAttribute("class", "strike");
+        taskSpan.innerHTML = subTask.subTaskName;
+    }
+    iconSpan.id = subTask.checkId;
+    iconSpan.addEventListener("click", function(){
+        strikeSubTask();
+    });
+    newDiv.appendChild(iconSpan);
+    taskSpan.style.marginLeft = "4%";
+    newDiv.setAttribute("class", "new-task");
+    newDiv.id = subTask.id;
+    newDiv.style.cursor = "pointer";
+    newDiv.append(taskSpan);
+    taskSpan.id = subTask.nameId;
+    taskSpan.addEventListener("click", function(){
+        addSubTaskSteps(this.id);
+    });
+    subTaskList.appendChild(newDiv);
 }
 
 function displayTaskName(inputValue) {
@@ -129,7 +173,8 @@ function addNewSubTask() {
     newDiv.id = getId();
     taskSpan.id = getId();
     taskSpan.addEventListener("click", function (){ addSubTaskSteps(this.id); });
-    newSubTask.id = taskSpan.id;
+    newSubTask.id = newDiv.id;
+    newSubTask.nameId = taskSpan.id; 
     newSubTask.isStriked = false;
     newSubTask.checkId = iconSpan.id;
     newSubTask.subTaskName = newTask.value;
@@ -139,8 +184,8 @@ function addNewSubTask() {
     subTaskInfo = taskSelected.subTask;
     subTaskInfo.push(newSubTask);
     makeInputEmpty("new-task");
-    newTask.focus();
     activeSubTask = newSubTask;
+    newTask.focus();
     console.log(activeSubTask)
 }
 
@@ -167,15 +212,15 @@ function changeSubTaskInRight(isStriked) {
     let subTaskImage = getElementById("sub-task").getElementsByTagName("span")[0];
     let subTaskName = getElementById("sub-task-name");
     let subStriked = subTaskName.innerHTML.strike();
-    console.log("reached head1");
     if (true == isStriked) {
-    console.log("reached head2");
+        subTaskImage.style.backgroundRepeat = "no-repeat";
         subTaskImage.style.backgroundImage = "url('check.svg')";
         subTaskImage.style.backgroundSize = "contain";
         subTaskName.innerHTML = subStriked;
     } else {
-    console.log("reached head3");
-        subTaskImage.setAttribute("class", "strike");
+        subTaskImage.style.backgroundRepeat = "no-repeat";
+        subTaskImage.style.backgroundImage = "url('verified.svg')";
+        subTaskImage.style.backgroundSize = "contain";
         subTaskName.innerHTML = activeSubTask.subTaskName;
     }
 }
@@ -197,40 +242,7 @@ document.getElementById("plus").addEventListener("click", function(){
     newTask.focus();
 });
 
-function displayTaskInfo(idValue) {
-    let right = getElementById("right-column");
-    var taskSelected = tasks.find(function(event) {
-        return event.id == idValue;
-    });
-    right.style.display = "none";
-    right.style.transition = "0.3s";
-    console.log(taskSelected);
-    let subTaskInfo = taskSelected.subTask;
-    let subTaskList = getElementById("sub-task-list");
-    subTaskList.innerHTML = "";
-    subTaskInfo.forEach(displaySubTask);
-}
 
-
-function displaySubTask(subTask, index) {
-    let subTaskList = getElementById("sub-task-list");
-    let newDiv = document.createElement("div");
-    let taskSpan = document.createElement("span");
-    let iconSpan = document.createElement("span");
-    iconSpan.innerHTML = "<i class='fa fa-circle-o' aria-hidden='true'></i>";
-    iconSpan.setAttribute("class", "strike");
-    newDiv.appendChild(iconSpan);
-    taskSpan.innerHTML = subTask.subTaskName;
-    taskSpan.style.marginLeft = "4%";
-    newDiv.setAttribute("class", "new-task");
-    newDiv.id = subTask.id;
-    newDiv.style.cursor = "pointer";
-    newDiv.append(taskSpan);
-    taskSpan.addEventListener("click", function(){
-        addSubTaskSteps(this.id);
-    });
-    subTaskList.appendChild(newDiv);
-}
 
 document.getElementById("new-step").addEventListener("keyup", function(event) {
 let inputValue = getElementById("new-step");
@@ -254,7 +266,6 @@ function addNewStep() {
     let iconSpan = document.createElement("span");
     let steplist = getElementById("steps-list");
     activeSubTask.notes = notes.innerHTML;
-    iconSpan.innerHTML = "<i class='fa fa-circle-o' aria-hidden='true'></i>";
     iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
     newSpan.style.paddingLeft = "1.1rem";
@@ -265,6 +276,7 @@ function addNewStep() {
     steplist.appendChild(newDiv);
     stepInfo.id = newDiv.id;
     steps.push(stepInfo);
+    makeInputEmpty("new-step");
 }
 
 function addSubTaskSteps(subTaskId) {
@@ -272,7 +284,7 @@ function addSubTaskSteps(subTaskId) {
     for (let i in tasks) {
         var subtask = tasks[i].subTask;
         for (let j in subtask) {
-            if (subTaskId == subtask[j].id) {
+            if (subTaskId == subtask[j].nameId) {
                 selectedTask = tasks[i];
                 selectedSubTask = subtask[j];
                 activeSubTask = subtask[j];
@@ -289,8 +301,15 @@ function addSubTaskSteps(subTaskId) {
 
 function displayExistingSteps() {
     let subTaskName = getElementById("sub-task-name");
+    let strikeImage = getElementById("sub-task").getElementsByTagName("span")[0];
     let notes = getElementById("add-note-content");
-    subTaskName.innerHTML = activeSubTask.subTaskName;
+    if (true == activeSubTask.isStriked) {
+        strikeImage.setAttribute("class", "strike-image");
+        subTaskName.innerHTML = activeSubTask.subTaskName.strike();
+    } else {
+        strikeImage.setAttribute("class", "strike");
+        subTaskName.innerHTML = activeSubTask.subTaskName;
+    }
     let steplist = getElementById("steps-list");
     steplist.innerHTML = "";
     console.log("step");
@@ -302,11 +321,10 @@ function displayExistingSteps() {
 }
 
 function displaySteps(step, index) {
-console.log("step inside");
+    let steplist = getElementById("steps-list");
     let newDiv = document.createElement("div");
     let taskSpan = document.createElement("span");
     let iconSpan = document.createElement("span");
-    iconSpan.innerHTML = "<i class='fa fa-circle-o' aria-hidden='true'></i>";
     iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
     taskSpan.innerHTML = step.stepName;

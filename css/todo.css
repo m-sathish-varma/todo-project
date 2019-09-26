@@ -252,7 +252,7 @@ body {
     opacity:0.7;
     margin-left: 12px;
     display:none;
-    font-color:#35404a;
+    color:#35404a;
     font-size:0.8rem
 }
 
@@ -292,20 +292,12 @@ body {
     color: #4e8df4;
 }
 
-.middle-column .task-bar-container .sort-button #sort-text {
-
-}
-
 .middle-column .task-bar-container .share-button {
     display:none;
 }
 .middle-column .task-bar-container #task-name {
     font-size: 1.5rem;
     font-weight: 600;
-}
-
-.middle-column .task-bar-container .share-button #share-text {
-
 }
 
 .middle-column .task-bar-container .fa-ellipsis-h {
@@ -408,9 +400,8 @@ body {
 }
 
 .right-column .sub-task-info #sub-task #strike {
-    padding-left: 1rem;
-    color: #3e69e4;
-    width: 1rem;
+    margin-left: 0.8rem;
+    width: 1.3rem;
     height: 2rem;
     margin-top: 0.9rem;
     background-image:url("verified.svg");
