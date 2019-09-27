@@ -206,7 +206,11 @@ body {
     top: -0.2rem;
     background-size: contain;
     background-repeat: no-repeat;
+<<<<<<< 376b0bb276fd87ce510383071b85bff1d341f706
     background-image: url("../images/searchicon.svg");
+=======
+    background-image: url("../images/flag.svg");
+>>>>>>> added the icons and delete for sub task
 }
 
 .left-column #side-menu #star-icon {
@@ -228,6 +232,10 @@ body {
     height: 1rem;
     left: -0.2rem;
     top: -0.2rem;
+<<<<<<< 376b0bb276fd87ce510383071b85bff1d341f706
+=======
+    opacity:0.7;
+>>>>>>> added the icons and delete for sub task
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("../images/star.svg");
@@ -320,7 +328,11 @@ body {
     top: -0.2rem;
     background-size: contain;
     background-repeat: no-repeat;
+<<<<<<< 376b0bb276fd87ce510383071b85bff1d341f706
     background-image: url("../images/home.svg");
+=======
+    background-image: url("../images/plus-symbol.svg");
+>>>>>>> added the icons and delete for sub task
 }
 
 .left-column #plus-icon #plus-symbol:hover {
@@ -375,50 +387,83 @@ body {
 .middle-column .task-bar-container .task-bar{
     position: relative;
     top: 9%;
-    width: 91%;
-    left: 2%;
+    width: 88%;
+    left: 3%;
     height: 54%;
     color: #4269e4;
     display: flex;
 }
 
-.middle-column .task-bar-container .sort-button {
-    top: 30%;
+.middle-column .task-bar-container .task-bar #dot-icon {
+    width: 1rem;
+    left: 1rem;
+    top: 0.7rem;
     position: relative;
-    width: 58px;
-    height: 34px;
+    height: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/option.svg");
+}
+
+.middle-column .task-bar-container .sort-button {
+    top: 9%;
+    position: relative;
+    width: 3.3rem;
+    height: 2rem;
     background: transparent;
     border: none;
     outline: none;
     color: #4e8df4;
 }
 
+.middle-column .task-bar-container #share-icon {
+    width: 1rem;
+    left: 1rem;
+    top: 0.4rem;
+    position: relative;
+    height: 1rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/share-icon.svg");
+}
+
+.middle-column .task-bar-container #sort-icon {
+    width: 1rem;
+    left: 0.8rem;
+    top: 0.4rem;
+    position: relative;
+    height: 1rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/sort-icon.svg");
+}
+
 .middle-column .task-bar-container .share-button {
-    display:none;
+    top: 9%;
+    position: relative;
+    width: 5rem;
+    height: 2.3rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #4e8df4;
 }
 .middle-column .task-bar-container #task-name {
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.middle-column .task-bar-container .fa-ellipsis-h {
-    color: black;
-    font-size: 69%;
-    padding: 0.8rem 1rem 0 1rem;
-}
-
-.middle-column .task-bar-container .sort-button .fa-exchange-alt {
-    transform:rotate(90deg);
-}
-
 .middle-column .add-task-list #add-task {
+    margin-top: 0.7rem;
     display: flex;
     align-items: center;
     top: 50%;
 }
 
 .middle-column .add-task-list  {
-    height: 8%;
+    height: 6%;
     line-height: 56px;
     border: none;
     border-bottom: 1px solid #eaeaea;
@@ -429,16 +474,20 @@ body {
 .middle-column .add-task-list #add-task input {
     width: 91%;
     height: 7%;
-    padding: 1% 1.5%;
+    padding: 1% 0.9%;
     outline: none;
     border: none;
-    margin-left: 2%;
+    margin-left: 2.5%;
 }
 
 .middle-column .add-task-list #add-task #plus {
-    font-size: 30px;
-    color: #4174e8;
-    padding-left: 0.2%;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: 0.4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/plus-symbol.svg");
 }
 
 .middle-column .add-task-list #add-task #plus:hover {
@@ -459,10 +508,6 @@ body {
     align-items: center;
     width: 96%;
     margin-left: 1%;
-}
-
-.new-task .fa-circle {
-    font-size: 19px;
 }
 
 .right-column {
@@ -501,6 +546,7 @@ body {
 }
 
 .right-column .sub-task-info #sub-task #strike {
+    cursor:pointer;
     margin-left: 0.8rem;
     width: 1.3rem;
     height: 2rem;
@@ -509,18 +555,26 @@ body {
 }
 
 .strike {
+    cursor: pointer;
     color: #3e69e4;
-    width: 1rem;
+    width: 1.2rem;
     height: 1.2rem;
     font-size: 1.2rem;
     position: relative;
+<<<<<<< 376b0bb276fd87ce510383071b85bff1d341f706
     margin-left: 0.9rem;
     background-size:contain;
     background-repeat:no-repeat;
+=======
+    margin-left: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+>>>>>>> added the icons and delete for sub task
     background-image:url("../images/verified.svg");
 }
 
 .strike-image {
+    cursor:pointer;
     color: #3e69e4;
     width: 1rem;
     height: 1.2rem;
@@ -534,6 +588,18 @@ body {
 
 .right-column .sub-task-info #sub-task input {
     margin-left: 4%;
+}
+
+.right-column .sub-task-info #sub-task #star-symbol {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -0.2rem;
+    top: -0.2rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/star.svg");
 }
 
 .right-column .sub-task-info #sub-task #sub-task-name {
@@ -556,16 +622,22 @@ body {
 }
 
 .right-column .sub-task-info #add-steps #add-steps-symbol {
-    font-size: 30px;
-    color: #4174e8;
-    padding-left: 0.85rem;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: 0.9rem;
+    top: 0.2rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/plus-symbol.svg");
 }
 
 .right-column .sub-task-info #add-steps input {
     border: none;
     outline-color: #f4f4f4;
     background-color: #f4f4f4;
-    padding-left: 1rem;
+    padding-left: 2rem;
     width: 20rem;
     margin-top: 0.5rem;
     height: 2rem;

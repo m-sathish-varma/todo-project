@@ -211,7 +211,8 @@ function displaySubTask(subTask, index) {
             strikeSubTask(this.id);
         });
         newDiv.appendChild(iconSpan);
-        taskSpan.style.marginLeft = "4%";
+        taskSpan.style.marginLeft = "3%";
+        taskSpan.style.width = "40rem";
         newDiv.setAttribute("class", "new-task");
         newDiv.id = subTask.id;
         newDiv.style.cursor = "pointer";
@@ -251,6 +252,7 @@ function addNewSubTask() {
     iconSpan.addEventListener("click", function () { strikeSubTask(this.id) });
     newDiv.appendChild(iconSpan);
     taskSpan.style.marginLeft = "3%";
+    taskSpan.style.width = "40rem";
     newDiv.style.cursor = "pointer";
     newDiv.setAttribute("class", "new-task");
     newDiv.id = getId();

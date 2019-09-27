@@ -1,10 +1,9 @@
 <html>
     <head>
         <title>TODO</title>
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <link rel = "stylesheet" href = "css/todo.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href = "css/todo.css">
     </head>
     <body>
         <div class = "container">
@@ -83,21 +82,21 @@
                     <div div class = "task-bar-container">
                         <div class = "task-bar">
                             <div id = "task-name"> Task </div>
-                            <i class="fas fa-ellipsis-h"></i>
+                            <span id = "dot-icon"></span>
                         </div>
+                        <span id = "share-icon"></span>
                         <button class = "share-button">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
                             <span id = "share-text">Share</span>
                         </button>
+                        <span id = "sort-icon"></span>
                         <button class = "sort-button">
-                            <i class="fas fa-exchange-alt"></i>
                             <span id = "sort-text">sort</span>
                         </button>
                     </div>
                     <div id = "sub-task-list"> </div>
                     <div class = "add-task-list">
                         <div id = "add-task"> 
-                            <span id = "plus">+</span>
+                            <span id = "plus"></span>
                             <div class = "check-box-container">
                                 <input type="checkbox"/>
                                 <span class="checkmark"></span>
@@ -109,15 +108,14 @@
                 <div class = "right-column" id = "right-column">
                     <div class = "sub-task-info">
                         <div id = "sub-task">
-                            <span id = "strike">
-                            </span>
+                            <span id = "strike"></span>
                             <div id = "sub-task-name"></div>
-                            <i class = "fa fa-star-o"></i>
+                            <span id = "star-symbol"></span>
                         </div>
                         <div id = "steps-list">
                         </div>
                         <div id = "add-steps">
-                            <span id = "add-steps-symbol">+</span>
+                            <span id = "add-steps-symbol"></span>
                             <input type = "text" id = "new-step" placeholder = "Add steps"/>
                         </div>
                         <div id = "add-to-my-day">
