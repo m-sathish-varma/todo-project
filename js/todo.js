@@ -16,6 +16,7 @@ function init() {
     addEventListeners(getElementById("plus-symbol"), "click", toggleLeftByPlusSymbol);
     addEventListeners(getElementById("plus"), "click", focusSubTaskInput);
     addEventListeners(getElementById("sub-task-name"), "click", makeContentEditable);
+    addEventListeners(getElementById("dot-icon"), "click", deleteTask);
     addEventListeners(getElementById("new-list"), "keyup", addNewTask);
     addEventListeners(getElementById("new-task"), "keyup", addNewSubTaskInfo);
     addEventListeners(getElementById("new-step"), "keyup", addNewStepInfo);
@@ -42,18 +43,18 @@ function toggleLeftDiv() {
     var optionValue = getElementById("option-value");
     var words = getElementByClassName("menu-name");
     if (optionValue.value === "openMenu") {
-        leftDiv.style.width = "22.5%";
-        middle.style.width = "77%";
+        leftDiv.setAttribute("class", "left-column open-left-column-style");
+        middle.setAttribute("class", "middle-column close-middle-column-style");
         optionValue.value = "closeMenu";
         for (let i in words) {
-            words[i].style.display = "block";
+            words[i].setAttribute("class", "menu-name display-menu-name");
         }
     } else {
-        leftDiv.style.width = "50px";
-        middle.style.width = "97%";
+        leftDiv.setAttribute("class", "left-column close-left-column-style");
+        middle.setAttribute("class", "middle-column open-middle-column-style");
         optionValue.value = "openMenu";
         for (let i in words) {
-            words[i].style.display = "none";
+            words[i].setAttribute("class", "menu-name remove-menu-name");
         }
     }
 }
@@ -63,16 +64,25 @@ function toggleLeftDiv() {
  */
 function closeRightDiv() {
     let right = getElementById("right-column");
-    right.style.display = "none";
+    right.classList.add("remove-right-col-style");
     isRightColOpen = false;
 }
+
+/*
+function deleteTask() {
+    let confirmToDelete = confirm("Do you want to delete the task?");
+    if (true == confirmToDelete) {
+        activeTask.status = false;
+        active
+    }
+}*/
 
 /**
  * Used to delete sub task if the delete icon is pressed.
  */
 function deleteSubTask() {
     let right = getElementById("right-column");
-    right.style.display = "none";
+    right.classList.add("remove-right-col-style");
     isRightColOpen = false;
     let deleteOption = confirm("Do you want to delete?");
     if (true == deleteOption) {
@@ -90,12 +100,12 @@ function toggleLeftByPlusSymbol(){
     let middle = getElementById("middle-column");
     let optionValue = getElementById("option-value");
     let words = getElementByClassName("menu-name");
-    leftDiv.style.width = "22.5%";
-    middle.style.width = "77%";
+    leftDiv.setAttribute("class", "left-column open-left-column-style");
+    middle.setAttribute("class", "middle-column close-middle-column-style");
     optionValue.value = "closeMenu";
     newList.focus();
     for (let i in words) {
-        words[i].style.display = "block";
+        words[i].setAttribute("class", "menu-name display-menu-name");
     }
 }
 
@@ -243,8 +253,7 @@ function addNewList(inputValue) {
     let newSpan = retrieveCreatedElement("span");
     let iconSpan = retrieveCreatedElement("span");
     isRightColOpen = false;
-    right.style.display = "none";
-    right.style.transition = "0.3s";
+    right.classList.add("remove-right-col-style");
     newDiv.setAttribute("class", "new-list");
     iconSpan.setAttribute("id", "list-icon");
     newDiv.appendChild(iconSpan);
@@ -252,8 +261,8 @@ function addNewList(inputValue) {
     newDiv.id = getId();
     tasksInformation.id = newDiv.id;
     tasksInformation.subTask = subTask;
-    newSpan.style.display = "block";
-    newSpan.style.color = "black";
+    tasksInformation.status = true;
+    newSpan.setAttribute("id", "new-task-style");
     newSpan.innerHTML = checkTaskName(inputValue.value);
     tasksInformation.taskName = newSpan.innerHTML;
     newDiv.appendChild(newSpan);
@@ -292,8 +301,7 @@ function displayTaskInfo(idValue) {
         return event.id == idValue;
     });
     isRightColOpen = false;
-    right.style.display = "none";
-    right.style.transition = "0.3s";
+    right.classList.add("remove-right-col-style");
     let subTaskInfo = taskSelected.subTask;
     let subTaskList = getElementById("sub-task-list");
     subTaskList.innerHTML = "";
@@ -414,7 +422,7 @@ function getSubTaskByCheckId(checkId) {
 }
 
 /**
- * Used to strike the subtask in the present in the right div.
+ * Used to strike the subtask information present in the right div.
  * 
  * @param {*} isStriked contains information about the task is finished or not. 
  */
@@ -423,14 +431,10 @@ function changeSubTaskInRight(isStriked) {
     let subTaskName = getElementById("sub-task-name");
     let subStriked = subTaskName.innerHTML.strike();
     if (true == isStriked && true == isRightColOpen) {
-        subTaskImage.style.backgroundRepeat = "no-repeat";
-        subTaskImage.style.backgroundImage = "url('images/check.svg')";
-        subTaskImage.style.backgroundSize = "contain";
+        subTaskImage.setAttribute("class", "strike-image");
         subTaskName.innerHTML = subStriked;
     } else if (true == isRightColOpen) {
-        subTaskImage.style.backgroundRepeat = "no-repeat";
-        subTaskImage.style.backgroundImage = "url('images/verified.svg')";
-        subTaskImage.style.backgroundSize = "contain";
+        subTaskImage.setAttribute("class", "strike");
         subTaskName.innerHTML = activeSubTask.subTaskName;
     }
 }
@@ -469,7 +473,6 @@ function addNewStep() {
     addEventListeners(iconSpan, "click", strikeStep);
     iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
-    newSpan.style.paddingLeft = "1.1rem";
     newSpan.innerHTML = step.value;
     newDiv.appendChild(newSpan);
     newDiv.id = getId();
@@ -500,8 +503,7 @@ function displaySubTaskInfo() {
         }
     }
     isRightColOpen = true;
-    right.style.display = "block";
-    right.style.transition = "0.3s";
+    right.setAttribute("class", "right-column display-right-col-style");
     displayExistingSteps();
     makeInputEmpty("new-step");
 }
@@ -516,14 +518,10 @@ function displayExistingSteps() {
     let steplist = getElementById("steps-list");
     let steps = activeSubTask.steps;
     if (true == activeSubTask.isStriked) {
-        strikeImage.style.backgroundRepeat = "no-repeat";
-        strikeImage.style.backgroundImage = "url('images/check.svg')";
-        strikeImage.style.backgroundSize = "contain";
+        strikeImage.setAttribute("class", "strike-image");
         subTaskName.innerHTML = activeSubTask.subTaskName.strike();
     } else {
-        strikeImage.style.backgroundRepeat = "no-repeat";
-        strikeImage.style.backgroundImage = "url('images/verified.svg')";
-        strikeImage.style.backgroundSize = "contain";
+        strikeImage.setAttribute("class", "strike");
         subTaskName.innerHTML = activeSubTask.subTaskName;
     }
     steplist.innerHTML = "";
@@ -547,20 +545,15 @@ function displaySteps(step, index) {
     newDiv.id = step.id;
     taskSpan.id = step.nameId;
     addEventListeners(iconSpan, "click", strikeStep);
-    iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
     if (true == step.isStriked) {
-        iconSpan.style.backgroundRepeat = "no-repeat";
-        iconSpan.style.backgroundImage = "url('images/check.svg')";
-        iconSpan.style.backgroundSize = "contain";
+        iconSpan.setAttribute("class", "strike-image");
         taskSpan.innerHTML = step.stepName.strike();
     } else {
-        iconSpan.style.backgroundRepeat = "no-repeat";
-        iconSpan.style.backgroundImage = "url('images/verified.svg')";
-        iconSpan.style.backgroundSize = "contain";
+        iconSpan.setAttribute("class", "strike");
         taskSpan.innerHTML = step.stepName;
     }
-    taskSpan.style.marginLeft = "6%";
+    taskSpan.setAttribute("class", "taskspan-style");
     newDiv.setAttribute("class", "new-step");
     newDiv.append(taskSpan);
     steplist.appendChild(newDiv);
@@ -576,16 +569,13 @@ function strikeStep() {
     let imageSpan = getElementById(currentStep.checkId);
     let stepName = getElementById(currentStep.nameId);
     if (true == isStriked) {
-        imageSpan.style.backgroundRepeat = "no-repeat";
-        imageSpan.style.backgroundImage = "url('images/check.svg')";
-        imageSpan.style.backgroundSize = "contain";
+        imageSpan.setAttribute("class", "strike-image");
         stepName.innerHTML = currentStep.stepName.strike();
     } else {
-        imageSpan.style.backgroundRepeat = "no-repeat";
-        imageSpan.style.backgroundImage = "url('images/verified.svg')";
-        imageSpan.style.backgroundSize = "contain";
+        imageSpan.setAttribute("class", "strike");
         stepName.innerHTML = currentStep.stepName;
     }
+    stepName.setAttribute("class", "newstep-style");
 }
 
 /**

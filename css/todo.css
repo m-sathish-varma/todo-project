@@ -551,14 +551,13 @@ body {
     width: 1.3rem;
     height: 2rem;
     margin-top: 0.9rem;
-    background-image:url("../images/verified.svg");
 }
 
 .strike {
     cursor: pointer;
     color: #3e69e4;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 2.5rem;
+    height: 1.5rem;
     position: relative;
     margin-left: 1rem;
     background-size: contain;
@@ -796,6 +795,10 @@ body {
     width:40rem;
 }
 
+.newstep-style {
+    padding-left:1.1rem;
+}
+
 .new-list {
     display : flex;
     color : #3d71e4;
@@ -804,3 +807,43 @@ body {
     cursor : pointer;
     align-items : center;
 }
+
+#new-task-style {
+    display:block;
+    color:black;
+}
+
+.display-right-col-style {
+     display:block;
+     transition:o.3s;
+}
+
+.remove-right-col-style {
+     display:none;
+     transition:o.3s;
+}
+
+.open-left-column-style {
+    width:22.5%;
+}
+
+.close-left-column-style {
+    width:3.8%;
+}
+
+.open-middle-column-style {
+    width:97%;
+}
+
+.close-middle-column-style {
+    width:77%;
+}
+
+.display-menu-name {
+    display:block;
+}
+
+.remove-menu-name {
+    display:none;
+}
+
