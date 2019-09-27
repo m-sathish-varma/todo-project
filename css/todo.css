@@ -791,6 +791,11 @@ body {
     align-items: center;
 }
 
+.taskspan-style {
+    padding-left:3%;
+    width:40rem;
+}
+
 .new-list {
     display : flex;
     color : #3d71e4;

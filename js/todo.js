@@ -226,7 +226,7 @@ function updateSubTaskName(event) {
             activeSubTask.subTaskName = taskName.innerHTML;
             let subTask = getElementById(activeSubTask.id).getElementsByTagName("span")[1];
             subTask.innerHTML = "";
-            subTask.style.height = "4rem";
+            subTask.setAttribute("class", "taskspan-style");
             subTask.innerHTML = activeSubTask.subTaskName;
         }
     }
@@ -259,7 +259,7 @@ function addNewList(inputValue) {
     newSpan.innerHTML = checkTaskName(inputValue.value);
     tasksInformation.taskName = newSpan.innerHTML;
     newDiv.appendChild(newSpan);
-    newDiv.addEventListener("click", function(){
+    newDiv.addEventListener("click", function() {
         var taskName = getElementById("task-name");
         taskName.innerHTML = newSpan.innerHTML;
         displayTaskInfo(this.id);
@@ -267,6 +267,7 @@ function addNewList(inputValue) {
     sideMenuContent.appendChild(newDiv);
     displayTaskName(newSpan.innerHTML);
     inputValue.value = "";
+    activeTask = tasksInformation;
     tasks.push(tasksInformation);
 }
 
@@ -321,19 +322,14 @@ function displaySubTask(subTask, index) {
             taskSpan.innerHTML = subTask.subTaskName;
         }
         iconSpan.id = subTask.checkId;
-        iconSpan.addEventListener("click", function(){
-            strikeSubTask(this.id);
-        });
+        addEventListeners(iconSpan, "click", strikeSubTask);
         newDiv.appendChild(iconSpan);
-        taskSpan.style.marginLeft = "3%";
-        taskSpan.style.width = "40rem";
+        taskSpan.setAttribute("class", "taskspan-style");
         newDiv.setAttribute("class", "new-task");
         newDiv.id = subTask.id;
         newDiv.append(taskSpan);
         taskSpan.id = subTask.nameId;
-        taskSpan.addEventListener("click", function(){
-            displaySubTaskInfo(this.id);
-        });
+        addEventListeners(taskSpan, "click", displaySubTaskInfo);
         subTaskList.appendChild(newDiv);
     }
 }
@@ -357,14 +353,13 @@ function addNewSubTask() {
     taskSpan.innerHTML = newTask.value;
     iconSpan.setAttribute("class", "strike");
     iconSpan.id = getId();
-    iconSpan.addEventListener("click", function () { strikeSubTask(this.id) });
+    addEventListeners(iconSpan, "click", strikeSubTask);
     newDiv.appendChild(iconSpan);
-    taskSpan.style.marginLeft = "3%";
-    taskSpan.style.width = "40rem";
+    taskSpan.setAttribute("class", "taskspan-style");
     newDiv.setAttribute("class", "new-task");
     newDiv.id = getId();
     taskSpan.id = getId();
-    taskSpan.addEventListener("click", function (){ displaySubTaskInfo(this.id); });
+    addEventListeners(taskSpan, "click", displaySubTaskInfo);
     newSubTask.id = newDiv.id;
     newSubTask.nameId = taskSpan.id; 
     newSubTask.isStriked = false;
@@ -372,22 +367,20 @@ function addNewSubTask() {
     newSubTask.subTaskName = newTask.value;
     newSubTask.steps = stepsList;
     newSubTask.status = true;
-    newDiv.append(taskSpan);
+    newDiv.appendChild(taskSpan);
     subTaskList.appendChild(newDiv);
     subTaskInfo = taskSelected.subTask;
     subTaskInfo.push(newSubTask);
     makeInputEmpty("new-task");
     activeSubTask = newSubTask;
     newTask.focus();
-    console.log(activeSubTask);
 }
 
 /**
  * Used to strike the subtask if that task is finished.
- * 
- * @param {*} checkId contains the id the selected task image.
  */
-function strikeSubTask(checkId) {
+function strikeSubTask() {
+    let checkId = event.target.id;
     let selectedSubTask = getSubTaskByCheckId(checkId);
     let imageSpan = getElementById(selectedSubTask.id).getElementsByTagName("span")[0];
     let subTask = getElementById(selectedSubTask.id).getElementsByTagName("span")[1];
@@ -396,12 +389,10 @@ function strikeSubTask(checkId) {
     if (true == isStriked) {
         imageSpan.setAttribute("class", "strike-image");
         subTask.innerHTML = strikedName;
-        subTask.style.height = "4rem";
         changeSubTaskInRight(true);
     } else {
         imageSpan.setAttribute("class", "strike");
         subTask.innerHTML = selectedSubTask.subTaskName;
-        subTask.style.height = "4rem";
         changeSubTaskInRight(false);
     }
 }
@@ -477,7 +468,7 @@ function addNewStep() {
     activeSubTask.notes = notes.innerHTML;
     newSpan.id = getId();
     iconSpan.id = getId();
-    iconSpan.addEventListener("click", function() {strikeStep(this.id)});
+    addEventListeners(iconSpan, "click", strikeStep);
     iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
     newSpan.style.paddingLeft = "1.1rem";
@@ -496,11 +487,11 @@ function addNewStep() {
 
 /**
  * Used to display the subTaskinformation in the right div.
- * 
- * @param {*} subTaskId denotes id of the selected subtask.
  */
-function displaySubTaskInfo(subTaskId) {
+function displaySubTaskInfo() {
     var selectedTask;
+    let subTaskId = event.target.id;
+    console.log(subTaskId);
     let right = getElementById("right-column");
     for (let i in tasks) {
         var subtask = tasks[i].subTask;
@@ -512,6 +503,7 @@ function displaySubTaskInfo(subTaskId) {
             }
         }
     }
+    console.log(activeSubTask);
     isRightColOpen = true;
     right.style.display = "block";
     right.style.transition = "0.3s";
@@ -559,7 +551,7 @@ function displaySteps(step, index) {
     iconSpan.id = step.checkId;
     newDiv.id = step.id;
     taskSpan.id = step.nameId;
-    iconSpan.addEventListener("click", function() {strikeStep(this.id)});
+    addEventListeners(iconSpan, "click", strikeStep);
     iconSpan.setAttribute("class", "strike");
     newDiv.appendChild(iconSpan);
     if (true == step.isStriked) {
@@ -581,10 +573,9 @@ function displaySteps(step, index) {
 
 /**
  * Used to strike the step if step is finished and vice versa..
- * 
- * @param {*} id contains id of the selected step icon.
  */
-function strikeStep(id) {
+function strikeStep() {
+    let id = event.target.id; 
     let currentStep = getCurrentStep(id);
     let isStriked = getIsStepStriked(currentStep);
     let imageSpan = getElementById(currentStep.checkId);
