@@ -1,9 +1,42 @@
+"use strict";
+init();
+
 var tasks = [];
 var activeTask = [];
 var activeSubTask = [];
 var isRightColOpen;
 
-document.getElementById("menu-icon").addEventListener("click", function(){
+/**
+ * Used to bind all event listeners in the initial load of the page. 
+ */
+function init() {
+    addEventListeners(getElementById("menu-icon"), "click", toggleLeftDiv);
+    addEventListeners(getElementById("close-button"), "click", closeRightDiv);
+    addEventListeners(getElementById("delete-sub-task"), "click", deleteSubTask);
+    addEventListeners(getElementById("plus-symbol"), "click", toggleLeftByPlusSymbol);
+    addEventListeners(getElementById("plus"), "click", focusSubTaskInput);
+    addEventListeners(getElementById("sub-task-name"), "click", makeContentEditable);
+    addEventListeners(getElementById("new-list"), "keyup", addNewTask);
+    addEventListeners(getElementById("new-task"), "keyup", addNewSubTaskInfo);
+    addEventListeners(getElementById("new-step"), "keyup", addNewStepInfo);
+    addEventListeners(getElementById("sub-task-name"), "keyup", updateSubTaskName);
+}
+
+/**
+ * Used to add event and callback the function if the event is triggered.
+ * 
+ * @param {*} element containing element to which event to be added.
+ * @param {*} selectedEvent contains the event on which the callback has to be triggered.
+ * @param {*} resultOperation the function to be called if the event is triggered.
+ */
+function addEventListeners(element, selectedEvent, resultOperation) {
+    element.addEventListener(selectedEvent, resultOperation);
+}
+
+/**
+ * Used to toggle the left div if click event is triggered.
+ */
+function toggleLeftDiv() {
     var leftDiv = getElementById("left-column");
     var middle = getElementById("middle-column");
     var optionValue = getElementById("option-value");
@@ -23,15 +56,21 @@ document.getElementById("menu-icon").addEventListener("click", function(){
             words[i].style.display = "none";
         }
     }
-});
+}
 
-document.getElementById("close-button").addEventListener("click", function() {
+/**
+ * Used to close the right div if the close icon is triggered by the click event.
+ */
+function closeRightDiv() {
     let right = getElementById("right-column");
     right.style.display = "none";
     isRightColOpen = false;
-});
+}
 
-document.getElementById("delete-sub-task").addEventListener("click", function() {
+/**
+ * Used to delete sub task if the delete icon is pressed.
+ */
+function deleteSubTask() {
     let right = getElementById("right-column");
     right.style.display = "none";
     isRightColOpen = false;
@@ -40,9 +79,12 @@ document.getElementById("delete-sub-task").addEventListener("click", function() 
         activeSubTask.status = false;
         displayTaskInfo(activeTask.id);
     }
-});
+}
 
-document.getElementById("plus-symbol").addEventListener("click", function(){
+/**
+ * Used to toggle left div by the plus symbol on the left div. 
+ */
+function toggleLeftByPlusSymbol(){
     let newList = getElementById("new-list");
     let leftDiv = getElementById("left-column");
     let middle = getElementById("middle-column");
@@ -55,11 +97,16 @@ document.getElementById("plus-symbol").addEventListener("click", function(){
     for (let i in words) {
         words[i].style.display = "block";
     }
-});
+}
 
-document.getElementById("new-list").addEventListener("keyup", function(event){
+/**
+ * Used to add the new task if event is triggered in the new list input text box.
+ * 
+ * @param {*} event used to get the event keycode.
+ */
+function addNewTask(event){
     let inputValue = getElementById("new-list");
-    if (event.keyCode == 13) {
+    if (event.keyCode == 13 && "" !== inputValue.value.trim()) {
         if(0 == inputValue.value.length) {
             inputValue.focus();
         } else {
@@ -67,67 +114,111 @@ document.getElementById("new-list").addEventListener("keyup", function(event){
            console.log("reached");
         }
     }
-});
+}
 
-document.getElementById("new-task").addEventListener("keyup", function(event) {
+/**
+ * Used to add new sub task information if event is triggered by new-task input text box.
+ * 
+ * @param {*} event used to get the event keycode.
+ */
+function addNewSubTaskInfo(event) {
     let inputValue = getElementById("new-task");
-    if (13 == event.keyCode) {
+    if (13 == event.keyCode && "" !== inputValue.value.trim()) {
         if(0 == inputValue.value.length) {
+            input.innerHTML = "";
             inputValue.focus();
         } else {
             addNewSubTask();
         }
     }
-});
+}
 
-document.getElementById("plus").addEventListener("click", function(){
+/**
+ * Used to focus the subtask input if the plus symbol is clicked.
+ */
+function focusSubTaskInput() {
     let subTaskList = getElementById("sub-task-list");
     let newTask = getElementById("new-task");
     makeInputEmpty("new-task");
     newTask.focus();
-});
+}
 
-document.getElementById("new-step").addEventListener("keyup", function(event) {
+/**
+ * Used to add new step information if enter key is pressed in the new-step input textbox.
+ * 
+ * @param {*} event used to get event keycode. 
+ */
+function addNewStepInfo(event) {
     let inputValue = getElementById("new-step");
     if (13 == event.keyCode) {
-        if(0 == inputValue.value.length) {
+        if(0 == inputValue.value.length && "" !== inputValue.value.trim()) {
             inputValue.focus();
         } else {
             addNewStep();
         }
     }
-});
+}
 
+/**
+ * Used the make the input text-box empty if some value in that text box. 
+ * 
+ * @param {*} inputId denotes id of the input text-box to be emptied.
+ */
 function makeInputEmpty(inputId) {
     var input = getElementById(inputId);
     input.value = "";
     input.focus();
 }
 
+/**
+ * Used to get the element by the help of the id. 
+ * 
+ * @param {*} id denotes the id of the element to be fetched.
+ */
 function getElementById(id) {
     return document.getElementById(id);
 }
 
+/**
+ * Used to get created element.
+ * @param {*} element denotes type of element to be created.
+ */
+function retrieveCreatedElement(element) {
+    return document.createElement(element);
+}
+
+/**
+ * Used to get the element by the help of the className. 
+ * 
+ * @param {*} className denotes the className of the element to be fetched.
+ */
 function getElementByClassName(className) {
     return document.getElementsByClassName(className);
 }
 
+/**
+ * Used to get random generated id.
+ */
 function getId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
-document.getElementById("sub-task-name").addEventListener("click", function(){
+/**
+ * Used to make the sub-task-name content editable. 
+ */
+function makeContentEditable() {
     let taskName = getElementById("sub-task-name");
-    console.log("edit");
     taskName.contentEditable = "true"; 
-});
+}
 
-document.getElementById("sub-task-name").addEventListener("keyup", function(event){
+/**
+ * Used to update the subTaskName.
+ * @param {*} event used to get the keyCode.
+ */
+function updateSubTaskName(event) {
     let taskName = getElementById("sub-task-name");
     console.log(taskName);
     if (13 == event.keyCode) {
-        document.execCommand('defaultParagraphSeparator', false, 'div');
-        event.preventDefault();
         if(undefined == typeof(taskName)) {
             taskName.innerHTML = activeSubTask.subTaskName;
             taskName.focus();
@@ -139,34 +230,35 @@ document.getElementById("sub-task-name").addEventListener("keyup", function(even
             subTask.innerHTML = activeSubTask.subTaskName;
         }
     }
-});
+}
 
+/**
+ * Used to add new task into the object.
+ * @param {*} inputValue contains the name of the task.
+ */
 function addNewList(inputValue) {
     let subTask = new Array();
     let right = getElementById("right-column");
     let tasksInformation = new Array();
     let sideMenuContent = getElementById("created-list");
-    let newDiv = document.createElement("div");
-    let newSpan = document.createElement("span");
+    let newDiv = retrieveCreatedElement("div");
+    let newSpan = retrieveCreatedElement("span");
+    let iconSpan = retrieveCreatedElement("span");
     isRightColOpen = false;
     right.style.display = "none";
     right.style.transition = "0.3s";
-    newDiv.style.display = "flex";
-    newDiv.style.color = "#3d71e4";
-    newDiv.innerHTML = "<i class = 'fa fa-list-ul'></i>";
+    newDiv.setAttribute("class", "new-list");
+    iconSpan.setAttribute("id", "list-icon");
+    newDiv.appendChild(iconSpan);
     newSpan.className = "menu-name";
     newDiv.id = getId();
     tasksInformation.id = newDiv.id;
     tasksInformation.subTask = subTask;
     newSpan.style.display = "block";
     newSpan.style.color = "black";
-    newSpan.innerHTML = checkTaskTitle(inputValue.value);
+    newSpan.innerHTML = checkTaskName(inputValue.value);
     tasksInformation.taskName = newSpan.innerHTML;
     newDiv.appendChild(newSpan);
-    newDiv.style.height = "37px";
-    newDiv.style.paddingLeft = "17px";
-    newDiv.style.cursor = "pointer";
-    newDiv.style.alignItems = "center";
     newDiv.addEventListener("click", function(){
         var taskName = getElementById("task-name");
         taskName.innerHTML = newSpan.innerHTML;
@@ -178,6 +270,23 @@ function addNewList(inputValue) {
     tasks.push(tasksInformation);
 }
 
+/**
+ * used to display the taskname in the middle column tomake it active to add subtasks.
+ *  
+ * @param {*} inputValue  contains the name of the task.
+ */
+function displayTaskName(inputValue) {
+    let subTaskList = getElementById("sub-task-list");
+    subTaskList.innerHTML = "";
+    makeInputEmpty("new-task");
+    let taskName = getElementById("task-name");
+    taskName.innerHTML = inputValue;
+}
+
+/**
+ * Used to display the task information if the task contained div is clicked. 
+ * @param {*} idValue contains the id of the selected task.
+ */
 function displayTaskInfo(idValue) {
     let right = getElementById("right-column");
     let taskSelected = tasks.find(function(event) {
@@ -192,12 +301,17 @@ function displayTaskInfo(idValue) {
     subTaskInfo.forEach(displaySubTask);
 }
 
-
+/**
+ * Used to add task into containing div.
+ * 
+ * @param {*} subTask contains the subtask information of the current task.
+ * @param {*} index contains the index value of the current task.
+ */
 function displaySubTask(subTask, index) {
     let subTaskList = getElementById("sub-task-list");
-    let newDiv = document.createElement("div");
-    let taskSpan = document.createElement("span");
-    let iconSpan = document.createElement("span");
+    let newDiv = retrieveCreatedElement("div");
+    let taskSpan = retrieveCreatedElement("span");
+    let iconSpan = retrieveCreatedElement("span");
     if (true == subTask.status) {
         if (true == subTask.isStriked) {
             iconSpan.setAttribute("class", "strike-image");
@@ -215,24 +329,18 @@ function displaySubTask(subTask, index) {
         taskSpan.style.width = "40rem";
         newDiv.setAttribute("class", "new-task");
         newDiv.id = subTask.id;
-        newDiv.style.cursor = "pointer";
         newDiv.append(taskSpan);
         taskSpan.id = subTask.nameId;
         taskSpan.addEventListener("click", function(){
-            addSubTaskSteps(this.id);
+            displaySubTaskInfo(this.id);
         });
         subTaskList.appendChild(newDiv);
     }
 }
 
-function displayTaskName(inputValue) {
-    let subTaskList = getElementById("sub-task-list");
-    subTaskList.innerHTML = "";
-    makeInputEmpty("new-task");
-    let taskName = getElementById("task-name");
-    taskName.innerHTML = inputValue;
-}
-
+/**
+ * used to add new sub task information into the object and display it in the middle column.
+ */
 function addNewSubTask() {
     let subTaskInfo;
     let index = document.getElementById("task-name");
@@ -242,9 +350,9 @@ function addNewSubTask() {
     let stepsList = [];
     let newSubTask = [];
     let newTask = getElementById("new-task");
-    let newDiv = document.createElement("div");
-    let taskSpan = document.createElement("span");
-    let iconSpan = document.createElement("span");
+    let newDiv = retrieveCreatedElement("div");
+    let taskSpan = retrieveCreatedElement("span");
+    let iconSpan = retrieveCreatedElement("span");
     let subTaskList = getElementById("sub-task-list");
     taskSpan.innerHTML = newTask.value;
     iconSpan.setAttribute("class", "strike");
@@ -253,11 +361,10 @@ function addNewSubTask() {
     newDiv.appendChild(iconSpan);
     taskSpan.style.marginLeft = "3%";
     taskSpan.style.width = "40rem";
-    newDiv.style.cursor = "pointer";
     newDiv.setAttribute("class", "new-task");
     newDiv.id = getId();
     taskSpan.id = getId();
-    taskSpan.addEventListener("click", function (){ addSubTaskSteps(this.id); });
+    taskSpan.addEventListener("click", function (){ displaySubTaskInfo(this.id); });
     newSubTask.id = newDiv.id;
     newSubTask.nameId = taskSpan.id; 
     newSubTask.isStriked = false;
@@ -275,6 +382,11 @@ function addNewSubTask() {
     console.log(activeSubTask);
 }
 
+/**
+ * Used to strike the subtask if that task is finished.
+ * 
+ * @param {*} checkId contains the id the selected task image.
+ */
 function strikeSubTask(checkId) {
     let selectedSubTask = getSubTaskByCheckId(checkId);
     let imageSpan = getElementById(selectedSubTask.id).getElementsByTagName("span")[0];
@@ -294,6 +406,11 @@ function strikeSubTask(checkId) {
     }
 }
 
+/**
+ * Used to get the subtask information by checkid if it presents.
+ * 
+ * @param {*} checkId used to get the subtask information if present.
+ */
 function getSubTaskByCheckId(checkId) {
     let selectedSubTask;
     for (let i in tasks) {
@@ -307,6 +424,11 @@ function getSubTaskByCheckId(checkId) {
     return selectedSubTask;
 }
 
+/**
+ * Used to strike the subtask in the present in the right div.
+ * 
+ * @param {*} isStriked contains information about the task is finished or not. 
+ */
 function changeSubTaskInRight(isStriked) {
     let subTaskImage = getElementById("sub-task").getElementsByTagName("span")[0];
     let subTaskName = getElementById("sub-task-name");
@@ -324,6 +446,11 @@ function changeSubTaskInRight(isStriked) {
     }
 }
 
+/**
+ * Used to change isStriked value if value is true then makes it false ans vice-versa.
+ * 
+ * @param {*} selectedSubTask contains the subtask information and used to store isStriked value.
+ */
 function getIsStriked(selectedSubTask) {
     if (false == selectedSubTask.isStriked) {
         selectedSubTask.isStriked = true;
@@ -334,14 +461,17 @@ function getIsStriked(selectedSubTask) {
     }
 }
 
+/**
+ * Used to add the new step into the active subtask. 
+ */
 function addNewStep() {
     let notes = getElementById("add-note-content");
     let step = getElementById("new-step");
     let stepInfo = [];
     let steps = activeSubTask.steps
-    let newDiv = document.createElement("div");
-    let newSpan = document.createElement("span");
-    let iconSpan = document.createElement("span");
+    let newDiv = retrieveCreatedElement("div");
+    let newSpan = retrieveCreatedElement("span");
+    let iconSpan = retrieveCreatedElement("span");
     let steplist = getElementById("steps-list");
     stepInfo.stepName = step.value;
     activeSubTask.notes = notes.innerHTML;
@@ -364,7 +494,12 @@ function addNewStep() {
     makeInputEmpty("new-step");
 }
 
-function addSubTaskSteps(subTaskId) {
+/**
+ * Used to display the subTaskinformation in the right div.
+ * 
+ * @param {*} subTaskId denotes id of the selected subtask.
+ */
+function displaySubTaskInfo(subTaskId) {
     var selectedTask;
     let right = getElementById("right-column");
     for (let i in tasks) {
@@ -384,6 +519,9 @@ function addSubTaskSteps(subTaskId) {
     makeInputEmpty("new-step");
 }
 
+/**
+ * Used to display existing step in the subtask seleted.
+ */
 function displayExistingSteps() {
     let subTaskName = getElementById("sub-task-name");
     let strikeImage = getElementById("sub-task").getElementsByTagName("span")[0];
@@ -408,11 +546,16 @@ function displayExistingSteps() {
     steps.forEach(displaySteps);
 }
 
+/**
+ * Used to display current step inforamtion. 
+ * @param {*} step contains the current step inforamtion.
+ * @param {*} index contains the index value of current step.
+ */
 function displaySteps(step, index) {
     let steplist = getElementById("steps-list");
-    let newDiv = document.createElement("div");
-    let taskSpan = document.createElement("span");
-    let iconSpan = document.createElement("span");
+    let newDiv = retrieveCreatedElement("div");
+    let taskSpan = retrieveCreatedElement("span");
+    let iconSpan = retrieveCreatedElement("span");
     iconSpan.id = step.checkId;
     newDiv.id = step.id;
     taskSpan.id = step.nameId;
@@ -432,11 +575,15 @@ function displaySteps(step, index) {
     }
     taskSpan.style.marginLeft = "6%";
     newDiv.setAttribute("class", "new-step");
-    newDiv.style.cursor = "pointer";
     newDiv.append(taskSpan);
     steplist.appendChild(newDiv);
 }
 
+/**
+ * Used to strike the step if step is finished and vice versa..
+ * 
+ * @param {*} id contains id of the selected step icon.
+ */
 function strikeStep(id) {
     let currentStep = getCurrentStep(id);
     let isStriked = getIsStepStriked(currentStep);
@@ -455,6 +602,11 @@ function strikeStep(id) {
     }
 }
 
+/**
+ * Used to get current step with help of checkId.
+ * 
+ * @param {*} id contains id the current step icon.
+ */
 function getCurrentStep(id) {
     let steps = activeSubTask.steps;
     for (let i in steps) {
@@ -464,6 +616,11 @@ function getCurrentStep(id) {
     }
 }
 
+/**
+ * Used to get information about the step is striked or not.
+ * 
+ * @param {*} currentStep contains the inforamtion about current step.
+ */
 function getIsStepStriked(currentStep) {
     if (false == currentStep.isStriked) {
         currentStep.isStriked = true;
@@ -474,19 +631,25 @@ function getIsStepStriked(currentStep) {
     }
 }
 
-function checkTaskTitle(title) {
+/**
+ * Used to check the name of task already exists or not, 
+ * if exists it appends number of the copies present.
+ * 
+ * @param {*} name contains the name of task to be checked.
+ */
+function checkTaskName(name) {
     let size;
     var list = tasks.filter(function(task) {
         if(task.taskName.includes("(")) {
-            return title === task.taskName.slice(0, task.taskName.indexOf("("));
+            return name === task.taskName.slice(0, task.taskName.indexOf("("));
         } else {
-           return task.taskName == title;
+           return task.taskName == name;
         }
     });
     size = list.length;
     if(0 == size) {
-        return title;
+        return name;
     } else {
-        return (title+"&nbsp;("+size+")");
+        return (name+"&nbsp;("+size+")");
     }
 }
