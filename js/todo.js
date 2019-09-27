@@ -111,7 +111,6 @@ function addNewTask(event){
             inputValue.focus();
         } else {
            addNewList(inputValue);
-           console.log("reached");
         }
     }
 }
@@ -217,7 +216,6 @@ function makeContentEditable() {
  */
 function updateSubTaskName(event) {
     let taskName = getElementById("sub-task-name");
-    console.log(taskName);
     if (13 == event.keyCode) {
         if(undefined == typeof(taskName)) {
             taskName.innerHTML = activeSubTask.subTaskName;
@@ -491,7 +489,6 @@ function addNewStep() {
 function displaySubTaskInfo() {
     var selectedTask;
     let subTaskId = event.target.id;
-    console.log(subTaskId);
     let right = getElementById("right-column");
     for (let i in tasks) {
         var subtask = tasks[i].subTask;
@@ -499,11 +496,9 @@ function displaySubTaskInfo() {
             if (subTaskId == subtask[j].nameId) {
                 activeTask = tasks[i];
                 activeSubTask = subtask[j];
-                console.log(activeSubTask);
             }
         }
     }
-    console.log(activeSubTask);
     isRightColOpen = true;
     right.style.display = "block";
     right.style.transition = "0.3s";
