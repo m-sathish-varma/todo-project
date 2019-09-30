@@ -556,22 +556,22 @@ body {
 .strike {
     cursor: pointer;
     color: #3e69e4;
-    width: 2.5rem;
-    height: 1.5rem;
+    width: 1.5rem;
+    height: 1.3rem;
     position: relative;
-    margin-left: 1rem;
+    margin-left: 0.8rem;
     background-size: contain;
     background-repeat: no-repeat;
     background-image:url("../images/verified.svg");
 }
 
 .strike-image {
-    cursor:pointer;
+    cursor: pointer;
     color: #3e69e4;
-    width: 1.3rem;
+    width: 1.5rem;
     height: 1.3rem;
     position: relative;
-    margin-left: 0.9rem;
+    margin-left: 0.8rem;
     background-size:contain;
     background-repeat:no-repeat;
     background-image:url("../images/check.svg");
