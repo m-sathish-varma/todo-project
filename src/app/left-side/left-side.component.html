@@ -1,0 +1,61 @@
+<div class = "left-column" id = "left-column" [ngClass]="isToggled ? 'left-column open-left-column-style' : 'left-column'">
+    <div class = "bars-icon">
+        <input type = "hidden" id="option-value" value = "openMenu"/>
+        <button id = "menu-icon" (click) = "toggleLeftmenu()">
+            <div class = "menu-icon"> </div>
+            <div class = "menu-icon"> </div>
+            <div class = "menu-icon"> </div>
+        </button>
+    </div>
+    <ul id = "side-menu">
+        <li>
+        <div id = "sun-icon">
+            <span id = "sun-symbol"></span>
+            <span *ngIf = "isToggled" class = "menu-name">My Day</span>
+        </div>
+        </li>
+        <li>
+        <div id = "star-icon">
+            <span id = "star-symbol"></span>
+            <span *ngIf = "isToggled" class = "menu-name">Important</span>
+        </div>
+        </li>
+        <li>
+        <div id = "calendar-icon">
+            <span id = "calendar-symbol"></span>
+           <span *ngIf = "isToggled" class = "menu-name">Planned</span>
+        </div>
+        </li>
+        <li>
+        <div id = "user-icon">
+            <span id = "user-symbol"></span>
+            <span *ngIf = "isToggled" class = "menu-name">Assigned To Me</span>
+        </div>
+        </li>
+        <li>
+        <div id = "flag-icon">
+            <span id = "flag-symbol"></span>
+            <span *ngIf = "isToggled" class = "menu-name">Flagged Email</span>
+        </div>
+        </li>
+        <li>
+        <div id = "home-icon">
+            <span id = "home-symbol"></span>
+            <span *ngIf = "isToggled" class = "menu-name">Tasks</span>
+        </div>
+        </li>
+        <div id ="created-list">
+            <li *ngFor="let item of tasks">
+                <div class = "new-list">
+                    <span class = "list-icon"></span>
+                    <span class = "task-name">{{item.taskName}}</span>
+                </div>
+            </li>
+        </div>
+    </ul>
+    <div id = "plus-icon">
+        <span (click) = "toggleLeftDivByPlus()" id = "plus-symbol"></span>
+        <input *ngIf = "isToggled" type = "text" id = "new-list" #newList placeholder = "New list" class = "menu-name" (keyup.enter) = "addTask(newList)"/>
+        <span *ngIf = "isToggled" id = "group-symbol"></span> 
+    </div>
+</div>

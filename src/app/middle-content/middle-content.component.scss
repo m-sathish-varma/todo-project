@@ -1,0 +1,129 @@
+.middle-column {
+    flex: 1;
+    width: 99.9%;
+    height: 100%;
+    border-right: 1px solid #eaeaea;
+    background-color: white;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+:host {
+    width:100%;
+}
+
+.middle-column .task-bar-container {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.middle-column .task-bar-container .task-bar{
+    position: relative;
+    top: 9%;
+    width: 88%;
+    left: 3%;
+    height: 54%;
+    color: #4269e4;
+    display: flex;
+}
+
+.middle-column .task-bar-container .task-bar #dot-icon {
+    width: 1rem;
+    left: 1rem;
+    top: 0.7rem;
+    position: relative;
+    height: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/option.svg");
+}
+
+.middle-column .task-bar-container .sort-button {
+    top: 9%;
+    position: relative;
+    width: 3.3rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #4e8df4;
+}
+
+.middle-column .task-bar-container #share-icon {
+    width: 1rem;
+    left: 1rem;
+    top: 0.4rem;
+    position: relative;
+    height: 1rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/share-icon.svg");
+}
+
+.middle-column .task-bar-container #sort-icon {
+    width: 1rem;
+    left: 0.8rem;
+    top: 0.4rem;
+    position: relative;
+    height: 1rem;
+    opacity:0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/sort-icon.svg");
+}
+
+.middle-column .task-bar-container .share-button {
+    top: 9%;
+    position: relative;
+    width: 5rem;
+    height: 2.3rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #4e8df4;
+}
+.middle-column .task-bar-container #task-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.middle-column .add-task-list #add-task {
+    margin-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    top: 50%;
+}
+
+.middle-column .add-task-list  {
+    height: 6%;
+    line-height: 56px;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    width: 96%;
+    margin-left: 2%;
+}
+
+.middle-column .add-task-list #add-task input {
+    width: 91%;
+    height: 7%;
+    padding: 1% 0.9%;
+    outline: none;
+    border: none;
+    margin-left: 2.5%;
+}
+
+.middle-column .add-task-list #add-task #plus {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: 0.4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/plus-symbol.svg");
+}
+
+.middle-column .add-task-list #add-task #plus:hover {
+    cursor:pointer;
+}
