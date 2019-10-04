@@ -46,9 +46,9 @@
         </li>
         <div id ="created-list">
             <li *ngFor="let item of tasks">
-                <div class = "new-list">
+                <div class = "new-list" (click) = "displayTaskInfo(item)">
                     <span class = "list-icon"></span>
-                    <span class = "task-name">{{item.taskName}}</span>
+                    <span *ngIf = "isToggled" class = "menu-name">{{item.taskName}}</span>
                 </div>
             </li>
         </div>

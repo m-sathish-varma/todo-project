@@ -12,4 +12,10 @@ export class MiddleContentComponent implements OnInit {
   ngOnInit() {
   }
 
+  displayTaskname(task):void{
+    console.log(task);
+    var input = document.querySelector("#task-name");
+    input.innerHTML = task;
+  }
+
 }
