@@ -9,6 +9,7 @@
 
 :host {
     width:100%;
+    flex:1;
 }
 
 .middle-column .task-bar-container {
@@ -125,4 +126,50 @@
 
 .middle-column .add-task-list #add-task #plus:hover {
     cursor:pointer;
+}
+
+.strike-text {
+    text-decoration: line-through;
+}
+
+.taskspan-style {
+   padding-left:3%;
+   width:40rem;
+}
+
+.new-task {
+    cursor:pointer;
+    height: 8%;
+    line-height: 56px;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    width: 96%;
+    margin-left: 1%;
+}
+
+.strike {
+    cursor: pointer;
+    color: #3e69e4;
+    width: 1.5rem;
+    height: 1.3rem;
+    position: relative;
+    margin-left: 0.8rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image:url("/assets/images/verified.svg");
+}
+
+.strike-image {
+    cursor: pointer;
+    color: #3e69e4;
+    width: 1.5rem;
+    height: 1.3rem;
+    position: relative;
+    margin-left: 0.8rem;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-image:url("/assets/images/check.svg");
 }

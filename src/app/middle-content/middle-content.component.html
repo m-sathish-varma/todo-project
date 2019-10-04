@@ -1,8 +1,8 @@
 <div class = "middle-column" id = "middle-column">
     <div div class = "task-bar-container">
         <div class = "task-bar">
-            <div id = "task-name"> Task </div>
-            <span id = "dot-icon"></span>
+            <div id = "task-name" *ngIf="currentTask.status"> {{currentTask.taskName}} </div>
+            <span id = "dot-icon" (click) = "deleteTask()"></span>
         </div>
         <span id = "share-icon"></span>
         <button class = "share-button">
@@ -13,7 +13,12 @@
             <span id = "sort-text">sort</span>
         </button>
     </div>
-    <div id = "sub-task-list"> </div>
+    <div id = "sub-task-list" *ngFor="let subTask of currentTask.subTasks"> 
+        <div class = "new-task" *ngIf="subTask.status">
+            <span class = "strike" [class.strike-image] = "subTask.isStriked" (click) = "strikeSubTask(subTask)"></span>
+            <span class = "taskspan-style" (click) = "displaySubTask(subTask)" [ngClass]="subTask.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{subTask.subTaskName}}</span>
+        </div>
+    </div>
     <div class = "add-task-list">
         <div id = "add-task"> 
             <span id = "plus"></span>
@@ -21,7 +26,7 @@
                 <input type="checkbox"/>
                 <span class="checkmark"></span>
             </div>
-            <input type = "text" id = "new-task" placeholder = "Add task"/>
+            <input type = "text" id = "new-task" #newTask (keyup.enter) = "addSubTask(newTask)" placeholder = "Add task"/>
         </div>
     </div>
 </div>

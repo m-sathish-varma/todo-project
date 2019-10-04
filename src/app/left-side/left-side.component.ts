@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, HostListener} from '@angular/core';
 import {tasks} from '../tasks';
-import {MiddleContentComponent} from '../middle-content/middle-content.component';
-
 @Component({
   selector: 'app-left-side',
   templateUrl: './left-side.component.html',
@@ -10,7 +8,10 @@ import {MiddleContentComponent} from '../middle-content/middle-content.component
 
 export class LeftSideComponent implements OnInit {
 
-  middleContent = new MiddleContentComponent();
+  @Input() middleContent;
+
+  @Input() rightSide;
+
   tasks = tasks;
   isToggled:boolean = false;
   constructor() {
@@ -21,6 +22,7 @@ export class LeftSideComponent implements OnInit {
 
   toggleLeftmenu():void {
     this.isToggled = !this.isToggled;
+    console.log(tasks);
   }
 
   toggleLeftDivByPlus():void {
@@ -29,15 +31,20 @@ export class LeftSideComponent implements OnInit {
 
   addTask(input):void {
     if("" !== input.value.trim()) {
-      let taskname = input.value;
-      let task = [{taskName:this.checkTaskName(taskname), status:true}];
-      tasks.push(task[0]);
+      let taskname:string = input.value;
+      let task = {taskName:taskname, status:true, subTasks:[]};
+      tasks.push(task);
       input.value = "";
-      this.middleContent.displayTaskname(taskname);
+      this.middleContent.displayTaskname(task);
+      this.rightSide.isToggled = false;
     } else {
       input.value = "";
       input.focus();
     }
+  }
+
+  displayTaskInfo(task):void {
+    this.middleContent.displayTaskname(task);
   }
 
   /**
@@ -55,24 +62,19 @@ export class LeftSideComponent implements OnInit {
    */
   checkTaskName(name):string {
     let count:number = 0;
-    let list = tasks.filter(function(task) {
+    var list = tasks.filter(function(task) {
         if(task.taskName.includes("(")) {
             count++;
             return name === task.taskName.slice(0, task.taskName.indexOf("("));
         } else {
-            return task.taskName === name;
+            return task.taskName == name;
         }
     });
     let size = list.length;
-    if(0 === size) {
+    if(0 == size) {
         return name.trim();
     } else {
         return (name+" ("+(count * 1 + 1) +")");
     }
-  }
-
-  displayTaskInfo(task):void {
-    let name = task.taskName;
-    this.middleContent.displayTaskname(name);
   }
 }
