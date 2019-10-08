@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { tasks } from '../tasks';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class RightSideComponent implements OnInit {
   @Input() middleContent;
 
   isToggled:boolean;
-  currentSubTask = [];
+  currentSubTask = {};
   constructor() { }
 
   ngOnInit() {
@@ -26,10 +27,15 @@ export class RightSideComponent implements OnInit {
   }
 
   addStep(input):void {
-    let name = input.value;
-    let step = {stepName:name, status:true, isStriked:false};
-    this.currentSubTask.steps.push(step);
-    input.value = "";
+    if("" !== input.value.trim()) {
+      let name = input.value;
+      let step = {stepName:name, isStriked:false};
+      this.currentSubTask.steps.push(step);
+      input.value = "";
+    } else {
+        input.value = "";
+        input.focus();
+    }
   }
 
   strikeStep(step):void{
@@ -42,13 +48,14 @@ export class RightSideComponent implements OnInit {
 
   deleteSubTask():void{
     if (confirm("Do you want to delete subTask?")){
-      this.currentSubTask.status = false;
+      console.log(tasks);
+      this.middleContent.currentTask.subTasks.splice(this.middleContent.currentTask.subTasks.indexOf(this.currentSubTask),1);
     }
   }
 
   deleteStep(step):void {
     if (confirm("Do you want to delete step?")){
-      step.status = false;
+      this.currentSubTask.steps.splice(this.currentSubTask.steps.indexOf(step), 1);
     }
   }
 }

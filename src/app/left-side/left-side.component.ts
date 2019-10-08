@@ -18,21 +18,35 @@ export class LeftSideComponent implements OnInit {
   }
 
   ngOnInit() {
+    let taskInfo = {taskName:"Task", subTasks:[]};
+    tasks.push(taskInfo);
+    this.middleContent.currentTask = taskInfo;
   }
 
+  /**
+   * Used to toggle the left side menu bar.
+   */
   toggleLeftmenu():void {
     this.isToggled = !this.isToggled;
     console.log(tasks);
   }
 
+  /**
+   * Used to toggle the left menuBar by the plus button on the left side.
+   */
   toggleLeftDivByPlus():void {
     this.toggleLeftmenu();
   }
 
+  /**
+   * Used to add the task information into the global object created.
+   * 
+   * @param input contains the name of the task.
+   */
   addTask(input):void {
     if("" !== input.value.trim()) {
       let taskname:string = input.value;
-      let task = {taskName:taskname, status:true, subTasks:[]};
+      let task = {taskName:this.checkTaskName(taskname), subTasks:[]};
       tasks.push(task);
       input.value = "";
       this.middleContent.displayTaskname(task);
@@ -43,6 +57,11 @@ export class LeftSideComponent implements OnInit {
     }
   }
 
+  /**
+   * Used to display task information.
+   * 
+   * @param task contains the task information to be displayed.
+   */
   displayTaskInfo(task):void {
     this.middleContent.displayTaskname(task);
   }
@@ -76,5 +95,10 @@ export class LeftSideComponent implements OnInit {
     } else {
         return (name+" ("+(count * 1 + 1) +")");
     }
+  }
+
+  getTaskCount(item):number {
+    let taskCount:number = item.subTasks.filter(subTask => !subTask.isStriked).length;
+    return taskCount ? taskCount : null;
   }
 }

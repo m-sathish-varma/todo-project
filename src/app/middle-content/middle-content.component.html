@@ -1,7 +1,7 @@
 <div class = "middle-column" id = "middle-column">
     <div div class = "task-bar-container">
         <div class = "task-bar">
-            <div id = "task-name" *ngIf="currentTask.status"> {{currentTask.taskName}} </div>
+            <div id = "task-name"> {{currentTask.taskName}} </div>
             <span id = "dot-icon" (click) = "deleteTask()"></span>
         </div>
         <span id = "share-icon"></span>
@@ -13,10 +13,15 @@
             <span id = "sort-text">sort</span>
         </button>
     </div>
-    <div id = "sub-task-list" *ngFor="let subTask of currentTask.subTasks"> 
-        <div class = "new-task" *ngIf="subTask.status">
-            <span class = "strike" [class.strike-image] = "subTask.isStriked" (click) = "strikeSubTask(subTask)"></span>
-            <span class = "taskspan-style" (click) = "displaySubTask(subTask)" [ngClass]="subTask.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{subTask.subTaskName}}</span>
+    <div id = "sub-task-list">
+        <div *ngFor="let subTask of currentTask.subTasks"> 
+            <div class = "new-task">
+                <span class = "strike" [class.strike-image] = "subTask.isStriked" (click) = "strikeSubTask(subTask)"></span>
+                <div class = "sub-task-info">
+                    <span class = "taskspan-style" (click) = "displaySubTask(subTask)" [ngClass]="subTask.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{subTask.subTaskName}}</span>
+                    <div *ngIf="subTask.steps.length" class = "step-count">{{getStepCount(subTask)}} of {{subTask.steps.length}}</div>
+                </div>
+            </div>
         </div>
     </div>
     <div class = "add-task-list">
@@ -24,7 +29,6 @@
             <span id = "plus"></span>
             <div class = "check-box-container">
                 <input type="checkbox"/>
-                <span class="checkmark"></span>
             </div>
             <input type = "text" id = "new-task" #newTask (keyup.enter) = "addSubTask(newTask)" placeholder = "Add task"/>
         </div>

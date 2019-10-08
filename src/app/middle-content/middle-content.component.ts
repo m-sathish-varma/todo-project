@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { tasks } from '../tasks';
 
 @Component({
   selector: 'app-middle-content',
@@ -9,7 +10,7 @@ export class MiddleContentComponent implements OnInit {
   
   @Input() rightSide;
 
-  currentTask = [];
+  currentTask = {};
   isClicked:boolean = false;
 
   constructor() { }
@@ -19,13 +20,19 @@ export class MiddleContentComponent implements OnInit {
 
   displayTaskname(task):void{
     this.currentTask = task;
+    this.rightSide.isToggled = false;
   }
 
   addSubTask(input):void {
-    let name = input.value;
-    let subTaskInfo = {subTaskName:name, status:true, isStriked:false, steps:[]};
-    this.currentTask.subTasks.push(subTaskInfo);
-    input.value = "";
+    if("" !== input.value.trim()) {
+      let name = input.value;
+      let subTaskInfo = {subTaskName:name, isStriked:false, steps:[]};
+      this.currentTask.subTasks.push(subTaskInfo);
+      input.value = "";
+    } else {
+        input.value = "";
+        input.focus();
+    }
   }
   
   strikeSubTask(subTask):void {
@@ -34,14 +41,25 @@ export class MiddleContentComponent implements OnInit {
 
   displaySubTask(subTask):void {
     this.isClicked = !this.isClicked;
-    let isClicked = this.isClicked;
     this.rightSide.isToggled = true;
     this.rightSide.displaySubTaskInfo(subTask);
   }
 
+  getStepCount(subTask):number {
+    let stepCount:number = subTask.steps.filter(step => step.isStriked).length;
+    return stepCount;
+  }
+
   deleteTask():void {
+    let index;
     if (confirm("Do you want to delete Task?")){
-      this.currentTask.status = false;
+      if (tasks.indexOf(this.currentTask) === 0) {
+        index = 0;
+      } else {
+        index = 1;
+      }
+      tasks.splice(tasks.indexOf(this.currentTask), 1);
+      this.currentTask = tasks[index];
     }
   }
 }

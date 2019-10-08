@@ -118,7 +118,7 @@
     position: relative;
     width: 1rem;
     height: 1rem;
-    left: 0.4rem;
+    left: 0.6rem;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("/assets/images/plus-symbol.svg");
@@ -132,13 +132,27 @@
     text-decoration: line-through;
 }
 
+.sub-task-info {
+    width: 40rem;
+    height: 4rem;
+    padding-left: 1rem;
+}
+
 .taskspan-style {
-   padding-left:3%;
-   width:40rem;
+    position: absolute;
+    height: 3rem;
+    width: 40rem;
+}
+
+.step-count {
+    width: 5rem;
+    height: 1rem;
+    position: relative;
+    top: 1rem;
 }
 
 .new-task {
-    cursor:pointer;
+    cursor: pointer;
     height: 8%;
     line-height: 56px;
     border: none;
@@ -147,16 +161,16 @@
     font-size: 0.8rem;
     align-items: center;
     width: 96%;
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
 .strike {
     cursor: pointer;
     color: #3e69e4;
-    width: 1.5rem;
-    height: 1.3rem;
+    width: 1.3rem;
+    height: 1.1rem;
     position: relative;
-    margin-left: 0.8rem;
+    margin-left: 0.6rem;
     background-size: contain;
     background-repeat: no-repeat;
     background-image:url("/assets/images/verified.svg");
@@ -165,10 +179,10 @@
 .strike-image {
     cursor: pointer;
     color: #3e69e4;
-    width: 1.5rem;
-    height: 1.3rem;
+    width: 1.3rem;
+    height: 1.1rem;
     position: relative;
-    margin-left: 0.8rem;
+    margin-left: 0.6rem;
     background-size:contain;
     background-repeat:no-repeat;
     background-image:url("/assets/images/check.svg");

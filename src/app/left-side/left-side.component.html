@@ -44,16 +44,19 @@
             <span *ngIf = "isToggled" class = "menu-name">Tasks</span>
         </div>
         </li>
-        <div id ="created-list" *ngFor="let item of tasks">
-            <div class = "new-list" *ngIf="item.status" (click) = "displayTaskInfo(item)">
-                <span class = "list-icon"></span>
-                <span *ngIf = "isToggled" class = "menu-name">{{item.taskName}}</span>
+        <div id ="created-list">
+            <div *ngFor="let item of tasks">
+                <div class = "new-list" (click) = "displayTaskInfo(item)">
+                    <span class = "list-icon"></span>
+                    <span *ngIf = "isToggled" class = "menu-name">{{item.taskName}}</span>
+                    <span *ngIf = "isToggled" class = "task-count">{{getTaskCount(item)}}</span>
+                </div>
             </div>
         </div>
     </ul>
     <div id = "plus-icon">
-        <span (click) = "toggleLeftDivByPlus()" id = "plus-symbol"></span>
-        <input *ngIf = "isToggled" type = "text" id = "new-list" #newList placeholder = "New list" class = "menu-name" (keyup.enter) = "addTask(newList)"/>
+        <span id = "plus-symbol" (click) = "toggleLeftDivByPlus()"></span>
+        <input #newList *ngIf = "isToggled" type = "text" id = "new-list" placeholder = "New list" class = "menu-name" (keyup.enter) = "addTask(newList)"/>
         <span *ngIf = "isToggled" id = "group-symbol"></span> 
     </div>
 </div>

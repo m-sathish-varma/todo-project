@@ -1,15 +1,17 @@
-<div class = "right-column" id = "right-column" [ngClass] = "(isToggled && currentSubTask.status)? 'right-column display-right-col-style':'right-column'">
+<div class = "right-column" id = "right-column" [ngClass] = "(isToggled)? 'right-column display-right-col-style':'right-column'">
     <div class = "sub-task-info">
         <div id = "sub-task">
             <span class = "strike" [class.strike-image] = "currentSubTask.isStriked" (click) = "strikeSubTask()"></span>
             <div id = "sub-task-name" [class.strike-text] = "currentSubTask.isStriked">{{currentSubTask.subTaskName}}</div>
             <span id = "star-symbol"></span>
         </div>
-        <div id = "steps-list" *ngFor="let step of currentSubTask.steps">
-            <div class = "new-step" *ngIf="step.status">
-                <span class = "strike" [class.strike-image] = "step.isStriked" (click)="strikeStep(step)"></span>
-                <span class = "taskSpan-style" [ngClass]="step.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{step.stepName}}</span>
-                <span class = "delete-button" (click) = "deleteStep(step)">x</span>
+        <div id = "steps-list">
+            <div *ngFor="let step of currentSubTask.steps">
+                <div class = "new-step">
+                    <span class = "strike" [class.strike-image] = "step.isStriked" (click)="strikeStep(step)"></span>
+                    <span class = "taskSpan-style" [ngClass]="step.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{step.stepName}}</span>
+                    <span class = "delete-button" (click) = "deleteStep(step)">x</span>
+                </div>
             </div>
         </div>
         <div id = "add-steps">
