@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener} from '@angular/core';
-import {tasks} from '../tasks';
+import {tasks, taskType} from '../tasks';
 @Component({
   selector: 'app-left-side',
   templateUrl: './left-side.component.html',
@@ -18,7 +18,7 @@ export class LeftSideComponent implements OnInit {
   }
 
   ngOnInit() {
-    let taskInfo = {taskName:"Task", subTasks:[]};
+    let taskInfo:taskType = {taskName:"Task", subTasks:[]};
     tasks.push(taskInfo);
     this.middleContent.currentTask = taskInfo;
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tasks } from '../tasks';
+import { tasks, subTask} from '../tasks';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class RightSideComponent implements OnInit {
   @Input() middleContent;
 
   isToggled:boolean;
-  currentSubTask = {};
+  currentSubTask:subTask;
   constructor() { }
 
   ngOnInit() {
@@ -46,10 +46,22 @@ export class RightSideComponent implements OnInit {
     this.isToggled = false;
   }
 
+  updateSubTaskName(updatedName):void {
+    let name;
+    if("" !== updatedName.value.trim()) {
+      name = updatedName.value;
+      this.currentSubTask.subTaskName = name; 
+    } else {
+      updatedName.value = this.currentSubTask.subTaskName;
+    }
+    updatedName.blur();
+  }
+
   deleteSubTask():void{
     if (confirm("Do you want to delete subTask?")){
       console.log(tasks);
       this.middleContent.currentTask.subTasks.splice(this.middleContent.currentTask.subTasks.indexOf(this.currentSubTask),1);
+      this.isToggled = false;
     }
   }
 

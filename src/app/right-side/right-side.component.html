@@ -2,21 +2,21 @@
     <div class = "sub-task-info">
         <div id = "sub-task">
             <span class = "strike" [class.strike-image] = "currentSubTask.isStriked" (click) = "strikeSubTask()"></span>
-            <div id = "sub-task-name" [class.strike-text] = "currentSubTask.isStriked">{{currentSubTask.subTaskName}}</div>
+            <input id = "sub-task-name" #updatedName [class.strike-text] = "currentSubTask.isStriked" value = "{{currentSubTask.subTaskName}}" (keyup.enter) = "updateSubTaskName(updatedName)"/>
             <span id = "star-symbol"></span>
         </div>
         <div id = "steps-list">
             <div *ngFor="let step of currentSubTask.steps">
                 <div class = "new-step">
                     <span class = "strike" [class.strike-image] = "step.isStriked" (click)="strikeStep(step)"></span>
-                    <span class = "taskSpan-style" [ngClass]="step.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{step.stepName}}</span>
+                    <span class = "taskSpan-style" [class.strike-text]="step.isStriked">{{step.stepName}}</span>
                     <span class = "delete-button" (click) = "deleteStep(step)">x</span>
                 </div>
             </div>
         </div>
         <div id = "add-steps">
             <span id = "add-steps-symbol"></span>
-            <input type = "text" #newStep id = "new-step" placeholder = "Add steps" (keyup.enter) = "addStep(newStep)"/>
+            <input type = "text" #newStep id = "new-step" placeholder = "Add steps" (keyup.enter) = "addStep(newStep)" maxlength="255"/>
         </div>
         <div id = "add-to-my-day">
             &#9728;

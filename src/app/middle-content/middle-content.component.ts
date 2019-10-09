@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tasks } from '../tasks';
+import { tasks, taskType } from '../tasks';
 
 @Component({
   selector: 'app-middle-content',
@@ -10,7 +10,7 @@ export class MiddleContentComponent implements OnInit {
   
   @Input() rightSide;
 
-  currentTask = {};
+  currentTask:taskType;
   isClicked:boolean = false;
 
   constructor() { }
@@ -50,15 +50,24 @@ export class MiddleContentComponent implements OnInit {
     return stepCount;
   }
 
+  updateTaskName(taskName):void {
+    let name;
+    if("" !== taskName.value.trim() && "Task" !== this.currentTask.taskName) {
+      name = taskName.value;
+      this.currentTask.taskName = name;
+    } else {
+      taskName.value = this.currentTask.taskName;
+    }
+    taskName.blur();
+  }
+
   deleteTask():void {
-    let index;
+    let index = tasks.indexOf(this.currentTask);
     if (confirm("Do you want to delete Task?")){
-      if (tasks.indexOf(this.currentTask) === 0) {
-        index = 0;
-      } else {
-        index = 1;
+      tasks.splice(index, 1);
+      if (index !== 0) {
+        index = index - 1;
       }
-      tasks.splice(tasks.indexOf(this.currentTask), 1);
       this.currentTask = tasks[index];
     }
   }

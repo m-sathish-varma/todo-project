@@ -1,7 +1,7 @@
 <div class = "middle-column" id = "middle-column">
     <div div class = "task-bar-container">
         <div class = "task-bar">
-            <div id = "task-name"> {{currentTask.taskName}} </div>
+            <input type = "text" id = "task-name" #taskName value = "{{currentTask.taskName}}" (keyup.enter) = "updateTaskName(taskName)"/>
             <span id = "dot-icon" (click) = "deleteTask()"></span>
         </div>
         <span id = "share-icon"></span>
@@ -14,13 +14,11 @@
         </button>
     </div>
     <div id = "sub-task-list">
-        <div *ngFor="let subTask of currentTask.subTasks"> 
-            <div class = "new-task">
-                <span class = "strike" [class.strike-image] = "subTask.isStriked" (click) = "strikeSubTask(subTask)"></span>
-                <div class = "sub-task-info">
-                    <span class = "taskspan-style" (click) = "displaySubTask(subTask)" [ngClass]="subTask.isStriked ? 'taskspan-style strike-text' : 'taskspan-style'">{{subTask.subTaskName}}</span>
-                    <div *ngIf="subTask.steps.length" class = "step-count">{{getStepCount(subTask)}} of {{subTask.steps.length}}</div>
-                </div>
+        <div class = "new-task" *ngFor="let subTask of currentTask.subTasks">
+            <span class = "strike" [class.strike-image] = "subTask.isStriked" (click) = "strikeSubTask(subTask)"></span>
+            <div class = "sub-task-info" (click) = "displaySubTask(subTask)">
+                <span class = "taskspan-style" [class.strike-text]="subTask.isStriked">{{subTask.subTaskName}}</span>
+                <div *ngIf="subTask.steps.length" class = "step-count">{{getStepCount(subTask)}} of {{subTask.steps.length}}</div>
             </div>
         </div>
     </div>
@@ -30,7 +28,7 @@
             <div class = "check-box-container">
                 <input type="checkbox"/>
             </div>
-            <input type = "text" id = "new-task" #newTask (keyup.enter) = "addSubTask(newTask)" placeholder = "Add task"/>
+            <input type = "text" id = "new-task" #newTask (keyup.enter) = "addSubTask(newTask)" placeholder = "Add task" maxlength="255"/>
         </div>
     </div>
 </div>

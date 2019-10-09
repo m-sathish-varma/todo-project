@@ -1,5 +1,5 @@
 .middle-column {
-    width: 99.9%;
+    width: 99.6%;
     height: 100%;
     border-right: 1px solid #eaeaea;
     background-color: white;
@@ -8,8 +8,8 @@
 }
 
 :host {
-    width:100%;
-    flex:1;
+    width: 42rem;
+    flex: 1;
 }
 
 .middle-column .task-bar-container {
@@ -85,8 +85,11 @@
     color: #4e8df4;
 }
 .middle-column .task-bar-container #task-name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    color: #3e69e4;
+    outline-color: black;
+    border: none;
 }
 
 .middle-column .add-task-list #add-task {
@@ -107,8 +110,7 @@
 
 .middle-column .add-task-list #add-task input {
     width: 91%;
-    height: 7%;
-    padding: 1% 0.9%;
+    height: 2rem;
     outline: none;
     border: none;
     margin-left: 2.5%;
@@ -124,6 +126,10 @@
     background-image: url("/assets/images/plus-symbol.svg");
 }
 
+input::placeholder {
+    color:#3e69e4;
+}
+
 .middle-column .add-task-list #add-task #plus:hover {
     cursor:pointer;
 }
@@ -134,27 +140,31 @@
 
 .sub-task-info {
     width: 40rem;
-    height: 4rem;
+    height: 3rem;
     padding-left: 1rem;
 }
 
 .taskspan-style {
     position: absolute;
-    height: 3rem;
     width: 40rem;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
 }
 
 .step-count {
     width: 5rem;
     height: 1rem;
     position: relative;
-    top: 1rem;
+    top: 2rem;
+    opacity: 0.7;
+    font-size: 0.7rem;
 }
 
 .new-task {
     cursor: pointer;
-    height: 8%;
-    line-height: 56px;
+    min-height: 8%;
+    line-height: 1.3rem;
     border: none;
     border-bottom: 1px solid #eaeaea;
     display: flex;
