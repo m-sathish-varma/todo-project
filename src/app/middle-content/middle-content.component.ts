@@ -7,52 +7,81 @@ import { tasks, taskType } from '../tasks';
   styleUrls: ['./middle-content.component.scss']
 })
 export class MiddleContentComponent implements OnInit {
-  
   @Input() rightSide;
 
-  currentTask:taskType;
-  isClicked:boolean = false;
+  currentTask: taskType;
+  isClicked = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  displayTaskname(task):void{
+  /**
+   * Used to display the task information into the middle div.
+   *
+   * @param task contains the information to be displayed.
+   */
+  displayTaskname(task): void {
     this.currentTask = task;
     this.rightSide.isToggled = false;
   }
 
-  addSubTask(input):void {
-    if("" !== input.value.trim()) {
-      let name = input.value;
-      let subTaskInfo = {subTaskName:name, isStriked:false, steps:[]};
+  /**
+   * Used to add subtask information into the main task.
+   *
+   * @param input contains the name of the subtask.
+   */
+  addSubTask(input): void {
+    if ('' !== input.value.trim()) {
+      const name = input.value;
+      const subTaskInfo = {subTaskName: name, isStriked: false, steps: []};
       this.currentTask.subTasks.push(subTaskInfo);
-      input.value = "";
+      input.value = '';
     } else {
-        input.value = "";
+        input.value = '';
         input.focus();
     }
   }
-  
-  strikeSubTask(subTask):void {
+
+  /**
+   * Used to strike the subtask if the subtask is finished.
+   *
+   * @param subTask contains the subtask to be striked.
+   */
+  strikeSubTask(subTask): void {
     subTask.isStriked = !subTask.isStriked;
   }
 
-  displaySubTask(subTask):void {
+  /**
+   * Used to display the subtask information in the right content.
+   *
+   * @param subTask contains the subtask information to be displayed.
+   */
+  displaySubTask(subTask): void {
     this.isClicked = !this.isClicked;
     this.rightSide.isToggled = true;
     this.rightSide.displaySubTaskInfo(subTask);
   }
 
-  getStepCount(subTask):number {
-    let stepCount:number = subTask.steps.filter(step => step.isStriked).length;
+  /**
+   * Used to get the count of the steps in the subtask.
+   *
+   * @param subTask contains the subtask inforamtion used to get the step count.
+   */
+  getStepCount(subTask): number {
+    const stepCount: number = subTask.steps.filter(step => step.isStriked).length;
     return stepCount;
   }
 
-  updateTaskName(taskName):void {
+  /**
+   * Used to update the task name if user changed the name of the task.
+   *
+   * @param taskName contains the updated name information.
+   */
+  updateTaskName(taskName): void {
     let name;
-    if("" !== taskName.value.trim() && "Task" !== this.currentTask.taskName) {
+    if ('' !== taskName.value.trim() && 'Task' !== this.currentTask.taskName) {
       name = taskName.value;
       this.currentTask.taskName = name;
     } else {
@@ -61,9 +90,12 @@ export class MiddleContentComponent implements OnInit {
     taskName.blur();
   }
 
-  deleteTask():void {
+  /**
+   * Used to delete the task information from the main task object.
+   */
+  deleteTask(): void {
     let index = tasks.indexOf(this.currentTask);
-    if (confirm("Do you want to delete Task?")){
+    if (confirm('Do you want to delete Task?')) {
       tasks.splice(index, 1);
       if (index !== 0) {
         index = index - 1;
