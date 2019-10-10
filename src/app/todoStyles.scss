@@ -1,0 +1,7 @@
+@mixin background($image-url) {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($image-url);
+}
+
+$color: #4e8df4;

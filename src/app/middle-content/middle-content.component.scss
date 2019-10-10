@@ -1,3 +1,7 @@
+@import '../todoStyles.scss';
+
+$color: #4e8df4;
+
 .middle-column {
     width: 99.6%;
     height: 100%;
@@ -5,195 +9,181 @@
     background-color: white;
     overflow: auto;
     overflow-x: hidden;
+
+    .task-bar-container {
+        height: 60px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+
+        .task-bar{
+            position: relative;
+            top: 9%;
+            width: 88%;
+            left: 3%;
+            height: 54%;
+            color: $color;
+            display: flex;
+
+            #dot-icon {
+                width: 1rem;
+                left: 1rem;
+                top: 0.7rem;
+                position: relative;
+                height: 1rem;
+                @include background("/assets/images/option.svg");
+            }
+        }
+
+        .sort-button {
+            top: 9%;
+            position: relative;
+            width: 3.3rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: $color;
+        }
+
+        #share-icon {
+            width: 1rem;
+            left: 1rem;
+            top: 0.4rem;
+            position: relative;
+            height: 1rem;
+            opacity:0.7;
+            @include background("/assets/images/share-icon.svg");
+        }
+
+        #sort-icon {
+            width: 1rem;
+            left: 0.8rem;
+            top: 0.4rem;
+            position: relative;
+            height: 1rem;
+            opacity:0.7;
+            @include background("/assets/images/sort-icon.svg");
+        }
+
+        .share-button {
+            top: 9%;
+            position: relative;
+            width: 5rem;
+            height: 2.3rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: $color;
+        }
+
+        #task-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $color;
+            outline-color: black;
+            border: none;
+        }
+    }
+
+    .add-task-list  {
+        height: 6%;
+        line-height: 56px;
+        border: none;
+        border-bottom: 1px solid #eaeaea;
+        width: 96%;
+        margin-left: 2%;
+
+        #add-task {
+            margin-top: 0.7rem;
+            display: flex;
+            align-items: center;
+            top: 50%;
+
+            input {
+                width: 91%;
+                height: 2rem;
+                outline: none;
+                border: none;
+                margin-left: 2.5%;
+            }
+
+            #plus {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: 0.6rem;
+                @include background("/assets/images/plus-symbol.svg");
+
+                &:hover {
+                    cursor:pointer;
+                }
+            }
+        }
+    }
+
+    .strike-text {
+        text-decoration: line-through;
+    }
+
+    .sub-task-info {
+        width: 40rem;
+        height: 3rem;
+        padding-left: 1rem;
+    }
+
+    .taskspan-style {
+        position: absolute;
+        width: 40rem;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .step-count {
+        width: 5rem;
+        height: 1rem;
+        position: relative;
+        top: 2rem;
+        opacity: 0.7;
+        font-size: 0.7rem;
+    }
+
+    .new-task {
+        cursor: pointer;
+        min-height: 8%;
+        line-height: 1.3rem;
+        border: none;
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        font-size: 0.8rem;
+        align-items: center;
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    .strike {
+        cursor: pointer;
+        color: $color;
+        width: 1.3rem;
+        height: 1.1rem;
+        position: relative;
+        margin-left: 0.6rem;
+        @include background("/assets/images/verified.svg");
+    }
+
+    .strike-image {
+        cursor: pointer;
+        color: $color;
+        width: 1.3rem;
+        height: 1.1rem;
+        position: relative;
+        margin-left: 0.6rem;
+        @include background("/assets/images/check.svg");
+    }
 }
 
 :host {
     width: 42rem;
     flex: 1;
-}
-
-.middle-column .task-bar-container {
-    height: 60px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-}
-.middle-column .task-bar-container .task-bar{
-    position: relative;
-    top: 9%;
-    width: 88%;
-    left: 3%;
-    height: 54%;
-    color: #4269e4;
-    display: flex;
-}
-
-.middle-column .task-bar-container .task-bar #dot-icon {
-    width: 1rem;
-    left: 1rem;
-    top: 0.7rem;
-    position: relative;
-    height: 1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/option.svg");
-}
-
-.middle-column .task-bar-container .sort-button {
-    top: 9%;
-    position: relative;
-    width: 3.3rem;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #4e8df4;
-}
-
-.middle-column .task-bar-container #share-icon {
-    width: 1rem;
-    left: 1rem;
-    top: 0.4rem;
-    position: relative;
-    height: 1rem;
-    opacity:0.7;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/share-icon.svg");
-}
-
-.middle-column .task-bar-container #sort-icon {
-    width: 1rem;
-    left: 0.8rem;
-    top: 0.4rem;
-    position: relative;
-    height: 1rem;
-    opacity:0.7;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/sort-icon.svg");
-}
-
-.middle-column .task-bar-container .share-button {
-    top: 9%;
-    position: relative;
-    width: 5rem;
-    height: 2.3rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #4e8df4;
-}
-.middle-column .task-bar-container #task-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #3e69e4;
-    outline-color: black;
-    border: none;
-}
-
-.middle-column .add-task-list #add-task {
-    margin-top: 0.7rem;
-    display: flex;
-    align-items: center;
-    top: 50%;
-}
-
-.middle-column .add-task-list  {
-    height: 6%;
-    line-height: 56px;
-    border: none;
-    border-bottom: 1px solid #eaeaea;
-    width: 96%;
-    margin-left: 2%;
-}
-
-.middle-column .add-task-list #add-task input {
-    width: 91%;
-    height: 2rem;
-    outline: none;
-    border: none;
-    margin-left: 2.5%;
-}
-
-.middle-column .add-task-list #add-task #plus {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: 0.6rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/plus-symbol.svg");
-}
-
-input::placeholder {
-    color:#3e69e4;
-}
-
-.middle-column .add-task-list #add-task #plus:hover {
-    cursor:pointer;
-}
-
-.strike-text {
-    text-decoration: line-through;
-}
-
-.sub-task-info {
-    width: 40rem;
-    height: 3rem;
-    padding-left: 1rem;
-}
-
-.taskspan-style {
-    position: absolute;
-    width: 40rem;
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-}
-
-.step-count {
-    width: 5rem;
-    height: 1rem;
-    position: relative;
-    top: 2rem;
-    opacity: 0.7;
-    font-size: 0.7rem;
-}
-
-.new-task {
-    cursor: pointer;
-    min-height: 8%;
-    line-height: 1.3rem;
-    border: none;
-    border-bottom: 1px solid #eaeaea;
-    display: flex;
-    font-size: 0.8rem;
-    align-items: center;
-    width: 96%;
-    margin-left: 2%;
-}
-
-.strike {
-    cursor: pointer;
-    color: #3e69e4;
-    width: 1.3rem;
-    height: 1.1rem;
-    position: relative;
-    margin-left: 0.6rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image:url("/assets/images/verified.svg");
-}
-
-.strike-image {
-    cursor: pointer;
-    color: #3e69e4;
-    width: 1.3rem;
-    height: 1.1rem;
-    position: relative;
-    margin-left: 0.6rem;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-image:url("/assets/images/check.svg");
 }

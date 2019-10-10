@@ -39,7 +39,7 @@
             </div>
         </li>
         <li>
-            <div id="home-icon">
+            <div id="home-icon" (click) = "displayDefaultTask()">
                 <span id="home-symbol"></span>
                 <span *ngIf="isToggled" class="menu-name">Tasks</span>
             </div>

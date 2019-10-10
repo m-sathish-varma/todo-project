@@ -1,297 +1,263 @@
+@import '../todoStyles.scss';
+
 .right-column {
     background-color: #f5f5f5;
     display: none;
     width: 22.3rem;
     overflow: auto;
     overflow-x: hidden;
-}
 
-.right-column .sub-task-info {
-    height: 92.5%;
-    margin: 0 0.5rem 0 0.7rem;
-    margin-top: 0.8rem;
-    background-color: white;
-}
+    .sub-task-info {
+        height: 92.5%;
+        margin: 0 0.5rem 0 0.7rem;
+        margin-top: 0.8rem;
+        background-color: white;
 
-.right-column .sub-task-info #sub-task {
-    display: flex;
-    min-height: 9%;
-    border: 1px solid #eaeaea;
-    align-items: center;
-    border-bottom: none;
-    opacity:0.8;
-}
+        #sub-task {
+            display: flex;
+            min-height: 9%;
+            border: 1px solid #eaeaea;
+            align-items: center;
+            border-bottom: none;
+            opacity:0.8;
 
-.strike {
-    cursor: pointer;
-    color: #3e69e4;
-    width: 1.3rem;
-    height: 1.1rem;
-    margin-left: 0.8rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image:url("/assets/images/verified.svg");
-}
+            input {
+                margin-left: 4%;
+            }
 
-.strike-image {
-    cursor: pointer;
-    color: #3e69e4;
-    width: 1.3rem;
-    height: 1.1rem;
-    margin-left: 0.8rem;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-image:url("/assets/images/check.svg");
-}
+            #star-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                opacity: 0.7;
+                left: 2rem;
+                @include background("/assets/images/star.svg");
+            }
 
-.right-column .sub-task-info #sub-task input {
-    margin-left: 4%;
-}
+            #sub-task-name {
+                width: 69%;
+                min-height: 2rem;
+                align-items: center;
+                display: flex;
+                outline-color: black;
+                margin-bottom: 0.6rem;
+                word-break: break-word;
+                font-size: 1rem;
+                font-weight: 600;
+                border: none;
+                color: #0c0d0e;
+            }
+        }
 
-.right-column .sub-task-info #sub-task #star-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    opacity: 0.7;
-    left: 2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(/assets/images/star.svg);
-}
+        #add-steps {
+            display: flex;
+            height: 6%;
+            border: 1px solid #eaeaea;
+            align-items: center;
+            border-bottom: none;
+            border-top: none;
 
-.right-column .sub-task-info #sub-task #sub-task-name {
-    width: 69%;
-    min-height: 2rem;
-    align-items: center;
-    display: flex;
-    outline-color: black;
-    margin-bottom: 0.6rem;
-    word-break: break-word;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    color: #0c0d0e;
-}
+            #add-steps-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: 0.9rem;
+                top: 0.2rem;
+                opacity:0.7;
+                @include background("/assets/images/plus-symbol.svg");
+            }
 
-.right-column .sub-task-info #add-steps {
-    display: flex;
-    height: 6%;
-    border: 1px solid #eaeaea;
-    align-items: center;
-    border-bottom: none;
-    border-top: none;
-}
+            input {
+                border: none;
+                outline-color: #f4f4f4;
+                background-color: #f4f4f4;
+                padding-left: 2rem;
+                width: 20rem;
+                margin-top: 0.5rem;
+                height: 2rem;
+            }
+        }
 
-.right-column .sub-task-info #add-steps #add-steps-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: 0.9rem;
-    top: 0.2rem;
-    opacity:0.7;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/plus-symbol.svg");
-}
+        #add-to-my-day {
+            display: flex;
+            height: 8%;
+            border: 1px solid #eaeaea;
+            align-items: center;
+            padding-left: 1rem;
+            color: #767678;
+            margin-top: 1rem;
+            font-size:0.8rem;
+        }
 
-.right-column .sub-task-info #add-steps input {
-    border: none;
-    outline-color: #f4f4f4;
-    background-color: #f4f4f4;
-    padding-left: 2rem;
-    width: 20rem;
-    margin-top: 0.5rem;
-    height: 2rem;
-}
+        #add-my-day-text {
+            padding-left: 1rem;
+        }
 
-.right-column .sub-task-info #add-to-my-day {
-    display: flex;
-    height: 8%;
-    border: 1px solid #eaeaea;
-    align-items: center;
-    padding-left: 1rem;
-    color: #767678;
-    margin-top: 1rem;
-    font-size:0.8rem;
-}
+        #remainder-me {
+            height: 9%;
+            display: flex;
+            align-items: center;
+            margin-top: 0.8rem;
+            border: 1px solid #eaeaea;
+            color: #767678;
+            padding-left: 1rem;
+            font-size:0.8rem;
 
-.right-column .sub-task-info #add-my-day-text {
-    padding-left: 1rem;
-}
+            #remainder-text{
+                padding-left: 1rem;
+            }
+        }
 
-.right-column .sub-task-info #remainder-me {
-    height: 9%;
-    display: flex;
-    align-items: center;
-    margin-top: 0.8rem;
-    border: 1px solid #eaeaea;
-    color: #767678;
-    padding-left: 1rem;
-    font-size:0.8rem;
-}
+        #add-due-date {
+            height: 8.5%;
+            display: flex;
+            align-items: center;
+            border: 1px solid #eaeaea;
+            color: #767678;
+            padding-left: 1rem;
+            border-top: none;
+            font-size:0.8rem;
+        }
 
-.right-column .sub-task-info #remainder-me #remainder-text{
-    padding-left: 1rem;
-}
+        #due-date-text {
+            padding-left: 1rem;
+        }
 
-.right-column .sub-task-info #add-due-date {
-    height: 8.5%;
-    display: flex;
-    align-items: center;
-    border: 1px solid #eaeaea;
-    color: #767678;
-    padding-left: 1rem;
-    border-top: none;
-    font-size:0.8rem;
-}
+        #repeat {
+            height: 8.5%;
+            display: flex;
+            align-items: center;
+            border: 1px solid #eaeaea;
+            color: #767678;
+            padding-left: 1rem;
+            border-top: none;
+            font-size:0.8rem;
+        }
 
-.right-column .sub-task-info #due-date-text {
-    padding-left: 1rem;
-}
+        #repeat-text {
+            padding-left: 1rem;
+        }
 
-.right-column .sub-task-info #repeat {
-    height: 8.5%;
-    display: flex;
-    align-items: center;
-    border: 1px solid #eaeaea;
-    color: #767678;
-    padding-left: 1rem;
-    border-top: none;
-    font-size:0.8rem;
-}
+        #add-file {
+            height: 8%;
+            display: flex;
+            align-items: center;
+            margin-top: 0.8rem;
+            border: 1px solid #eaeaea;
+            color: #767678;
+            padding-left: 1rem;
+            font-size:0.8rem;
 
-.right-column .sub-task-info #repeat-text {
-    padding-left: 1rem;
-}
+            .fa-paperclip {
+                transform:rotate(45deg);
+            }
+        }
 
-.right-column .sub-task-info #add-file {
-    height: 8%;
-    display: flex;
-    align-items: center;
-    margin-top: 0.8rem;
-    border: 1px solid #eaeaea;
-    color: #767678;
-    padding-left: 1rem;
-    font-size:0.8rem;
-}
+        #add-file-text {
+            padding-left: 1rem;
+        }
 
-.right-column .sub-task-info #add-file .fa-paperclip {
-    transform:rotate(45deg);
-}
+        #add-note {
+            border: 1px solid #eaeaea;
+            color: #767678;
+            margin-top: 0.9rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+        }
 
-.right-column .sub-task-info #add-file-text {
-    padding-left: 1rem;
-}
+        #add-note-content {
+            color: #767678;
+            height: 3rem;
+            width: 22rem;
+            outline: none;
+            font-size:0.8rem;
+        }
+    }
 
-.right-column .sub-task-info #add-note {
-    border: 1px solid #eaeaea;
-    color: #767678;
-    margin-top: 0.9rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-}
+    .taskCloseInfo {
+        display: flex;
+        width: 20.3rem;
+        background-color: white;
+        height: 2rem;
+        border-top: 1px solid #eaeaea;
 
-.right-column .sub-task-info #add-note-content {
-    color: #767678;
-    height: 3rem;
-    width: 22rem;
-    outline: none;
-    font-size:0.8rem;
-}
+        #close-button {
+            width: 2.5rem;
+            position: relative;
+            height: 1.3rem;
+            top: 0.5rem;
+            left: 1rem;
+            cursor: pointer;
+            @include background("/assets/images/close-pane.svg");
+        }
 
-[contenteditable=true]:empty::before {
-  content: attr(placeholder);
-}
+        #date {
+            width: 25rem;
+            margin-left: 2rem;
+        }
 
-.right-column .taskCloseInfo {
-    display: flex;
-    width: 20.3rem;
-    background-color: white;
-    height: 2rem;
-    border-top: 1px solid #eaeaea;
+        #delete-sub-task {
+            width: 2rem;
+            position: relative;
+            height: 1rem;
+            top: 0.7rem;
+            left: 1rem;
+            cursor: pointer;
+            @include background("/assets/images/trash.svg");
+        }
+    }
+        
+    [contenteditable=true]:empty::before {
+        content: attr(placeholder);
+    }
+    
+    .new-step {
+        cursor:pointer;
+        height: 7%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .taskspan-style {
+        padding-left: 8%;
+        width: 13.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .strike-text {
+        text-decoration: line-through;
+    }
+    
+    .delete-button {
+        position: relative;
+        left: 1.7rem;
+        opacity: 0.7;
+        width: 1rem;
+    }
+    
+    .strike {
+        cursor: pointer;
+        color: #3e69e4;
+        width: 1.3rem;
+        height: 1.1rem;
+        margin-left: 0.8rem;
+        @include background("/assets/images/verified.svg");
+    }
+    
+    .strike-image {
+        cursor: pointer;
+        color: #3e69e4;
+        width: 1.3rem;
+        height: 1.1rem;
+        margin-left: 0.8rem;
+        @include background("/assets/images/check.svg");
+    }
 }
-
-.right-column .taskCloseInfo #close-button {
-    width: 2.5rem;
-    position: relative;
-    height: 1.3rem;
-    top: 0.5rem;
-    left: 1rem;
-    cursor: pointer;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/close-pane.svg");
-}
-
-.right-column .taskCloseInfo #date {
-    width: 25rem;
-    margin-left: 2rem;
-}
-
-.right-column .taskCloseInfo #delete-sub-task {
-    width: 2rem;
-    position: relative;
-    height: 1rem;
-    top: 0.7rem;
-    left: 1rem;
-    cursor: pointer;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/trash.svg");
-}
-
- #list-icon {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    opacity:0.9;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/list.svg");
-}
-
+    
 .display-right-col-style {
     display:block;
     transition:0.3s;
-}
-
-.list-icon {
-   position: relative;
-   width: 1rem;
-   height: 1rem;
-   left: -0.2rem;
-   top: -0.2rem;
-   opacity:0.9;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-image: url("/assets/images/list.svg");
-}
-
-.new-step {
-   cursor:pointer;
-   height: 7%;
-   display: flex;
-   align-items: center;
-}
-
-.taskspan-style {
-    padding-left: 8%;
-    width: 13.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.strike-text {
-    text-decoration: line-through;
-}
-
-.delete-button {
-    position: relative;
-    left: 1.7rem;
-    opacity: 0.7;
-    width: 1rem;
 }

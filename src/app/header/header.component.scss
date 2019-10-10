@@ -1,99 +1,90 @@
-.top-header #settings-icon {
-    position: relative;
-    left: 20.3rem;
-    top: 1rem;
-    width: 1rem;
-    height: 1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/settings.svg");
-}
-
-.top-header #question-icon {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: 22.3rem;
-    top: 1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image:url("/assets/images/question.svg");
-}
-
-.top-header #mic-icon {
-    position: relative;
-    width: 1.2rem;
-    height: 1.2rem;
-    left: 24.2rem;
-    top: 0.8rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image:url("/assets/images/mic.svg");
-}
-
-.top-header #user-profile-icon {
-    position: relative;
-    width: 1.8rem;
-    height: 2.2rem;
-    left: 25.7rem;
-    top: 0.7rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image:url("/assets/images/userprofile.svg");
-}
-
-.top-header .todo-text {
-    line-height: 3.1rem;
-    color: white;
-    margin-left: 0.5rem;
-}
-
-.top-header .dotted-icon {
-    height: 1rem;
-    width: 1rem;
-    margin: 1.1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/menu-icon.svg");
-}
+@import '../todoStyles.scss';
 
 .top-header {
+
     display:flex;
     color:black;
     height:48px;
     background-color:#3978d6;
-}
 
-.top-header .search {
-    margin-left: 22.5%;
-    color: #5db5f8;
-}
+    #settings-icon {
+        position: relative;
+        left: 20.3rem;
+        top: 1rem;
+        width: 1rem;
+        height: 1rem;
+        @include background("/assets/images/settings.svg");
+    }
+    
+    #question-icon {
+        position: relative;
+        width: 1rem;
+        height: 1rem;
+        left: 22.3rem;
+        top: 1rem;
+        @include background("/assets/images/question.svg");
+    }
 
-.top-header #search-icon {
-    width: 1rem;
-    left: 20.5rem;
-    top: 1rem;
-    position: relative;
-    height: 1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/searchicon.svg");
-}
+    #mic-icon {
+        position: relative;
+        width: 1.2rem;
+        height: 1.2rem;
+        left: 24.2rem;
+        top: 0.8rem;
+        @include background("/assets/images/mic.svg");
+    }
 
-.top-header .search input {
-    width: 25rem;
-    margin-top: 0.47rem;
-    margin-left: 0.4rem;
-    padding-top: 0.3rem;
-    padding-left: 9.5%;
-    cursor: pointer;
-    height: 67%;
-    border-radius: 3px;
-    border: none;
-    background-color: #c7ddf8;
-    box-shadow: none;
-}
+    #user-profile-icon {
+        position: relative;
+        width: 1.8rem;
+        height: 2.2rem;
+        left: 25.7rem;
+        top: 0.7rem;
+        @include background("/assets/images/userprofile.svg");
+    }
 
-.top-header .search input:hover {
-    background-color:white;
+    .todo-text {
+        line-height: 3.1rem;
+        color: white;
+        margin-left: 0.5rem;
+    }
+
+    .dotted-icon {
+        height: 1rem;
+        width: 1rem;
+        margin: 1.1rem;
+        @include background("/assets/images/menu-icon.svg");
+    }
+
+    .search {
+        margin-left: 22.5%;
+        color: #5db5f8;
+
+        input {
+            width: 25rem;
+            margin-top: 0.47rem;
+            margin-left: 0.4rem;
+            padding-top: 0.3rem;
+            padding-left: 9.5%;
+            cursor: pointer;
+            height: 67%;
+            border-radius: 3px;
+            border: none;
+            background-color: #c7ddf8;
+            box-shadow: none;
+
+            &:hover {
+                background-color:white;
+            }
+        }
+    }
+    
+    #search-icon {
+        width: 1rem;
+        left: 20.5rem;
+        top: 1rem;
+        position: relative;
+        height: 1rem;
+        @include background("/assets/images/searchicon.svg");
+    }
 }

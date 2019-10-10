@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tasks, subTask } from '../tasks';
+import { tasks, SubTask } from '../tasks';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class RightSideComponent implements OnInit {
   @Input() middleContent;
 
   isToggled: boolean;
-  currentSubTask: subTask;
+  currentSubTask: SubTask;
   constructor() { }
 
   ngOnInit() {

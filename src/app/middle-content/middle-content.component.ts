@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tasks, taskType } from '../tasks';
+import { tasks, TaskType } from '../tasks';
 
 @Component({
   selector: 'app-middle-content',
@@ -9,7 +9,7 @@ import { tasks, taskType } from '../tasks';
 export class MiddleContentComponent implements OnInit {
   @Input() rightSide;
 
-  currentTask: taskType;
+  currentTask: TaskType;
   isClicked = false;
 
   constructor() { }

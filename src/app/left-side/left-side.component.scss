@@ -1,3 +1,5 @@
+@import '../todoStyles.scss';
+
 .left-column {
     transition: 0.3s;
     width: 3.2rem;
@@ -6,293 +8,267 @@
     border-right: 1px solid #eaeaea;
     overflow: auto;
     overflow-x: hidden;
+
+    .menu-icon {
+        width: 16px;
+        height: 1px;
+        background-color: #465efc;
+        margin: 3px;
+    }
+
+    #menu-icon:hover {
+        background-color:white;
+        cursor:pointer;
+    }
+
+    .bars-icon {
+        height:75px;
+
+        button {
+            position: relative;
+            left: 7px;
+            top: 20px;
+            border: none;
+            background: transparent;
+            width: 33px;
+            height: 33px;
+            outline-color:#f4f4f4;
+        }
+    }
+
+    #side-menu {
+        margin-top: -3px;
+        padding-left: 1px;
+        overflow-x: hidden;
+
+        #sun-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+
+            #sun-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                @include background("/assets/images/sun.svg");
+            }
+        }
+
+        #flag-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+
+            #flag-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                @include background("/assets/images/flag.svg");
+            }
+        }
+
+        #star-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+            
+            #star-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                opacity:0.7;
+                @include background("/assets/images/star.svg");
+            }
+        }
+
+        #calendar-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+
+            #calendar-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                @include background("/assets/images/calendar.svg");
+            }
+        }
+
+        #user-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+
+            #user-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                @include background("/assets/images/user.svg");
+            }
+        }
+
+        #home-icon {
+            height: 37px;
+            position: relative;
+            display: flex;
+            padding-left: 17px;
+            align-items: center;
+
+            &:hover {
+                background-color:white;
+                cursor:pointer;
+            }
+
+            #home-symbol {
+                position: relative;
+                width: 1rem;
+                height: 1rem;
+                left: -0.2rem;
+                top: -0.2rem;
+                @include background("/assets/images/home.svg");
+            }
+        }
+    }
+
+
+
+    #plus-icon {
+        height: 37px;
+        position: sticky;
+        display: flex;
+        padding-left: 17px;
+        bottom: 0;
+        background-color: white;
+
+        &:hover {
+            background-color:white;
+            cursor:pointer;
+        }
+
+        #plus-symbol{
+            position: relative;
+            width: 1.5rem;
+            height: 1rem;
+            left: -0.2rem;
+            top: 0.1rem;
+            @include background("/assets/images/plus-symbol.svg");
+        }
+
+        .menu-name {
+            line-height: 32px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 13rem
+        }
+        
+        input {
+            border: none;
+            outline-color: #f4f4f4;
+            background-color: #f4f4f4;
+            padding-bottom: 1rem;
+
+            &:hover {
+                background-color:#f4f4f4;
+            }
+        }
+
+        #group-symbol{
+            position: relative;
+            width: 2.5rem;
+            height: 1.5rem;
+            @include background("/assets/images/list-file.svg");
+        }
+    }
+
+    .new-list {
+       display : flex;
+       color : #3d71e4;
+       height : 37px;
+       padding-left : 17px;
+       cursor : pointer;
+       align-items : center;
+    }
+    
+    .task-count{
+        width: 1rem;
+        height: 1rem;
+        color: #292b35;
+        opacity: 0.7;
+        font-size: 0.7rem;
+    }
+    
+    .task-name {
+        padding-left: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .list-icon {
+       position: relative;
+       width: 1rem;
+       height: 1rem;
+       left: -0.2rem;
+       top: -0.2rem;
+       opacity:0.9;
+       @include background("/assets/images/list.svg");
+    }
+    
+    .menu-name {
+        padding-bottom: 0.5rem;
+        padding-left: 12px;
+        display: block;
+        color: #292b35;
+        font-size: 0.8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 13rem;
+    }
 }
-
-.left-column .menu-icon {
-    width: 16px;
-    height: 1px;
-    background-color: #465efc;
-    margin: 3px;
-}
-
-.left-column #menu-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column .bars-icon {
-    height:75px;
-}
-
-.left-column .bars-icon button {
-    position: relative;
-    left: 7px;
-    top: 20px;
-    border: none;
-    background: transparent;
-    width: 33px;
-    height: 33px;
-    outline-color:#f4f4f4;
-}
-
-#side-menu {
-    margin-top: -3px;
-    padding-left: 1px;
-    overflow-x: hidden;
-}
-
-.left-column #side-menu #sun-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-
-}
-
-.left-column #side-menu #sun-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #sun-icon #sun-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/sun.svg");
-}
-
-.left-column #side-menu #flag-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-}
-
-.left-column #side-menu #flag-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #flag-icon #flag-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/flag.svg");
-}
-
-.left-column #side-menu #star-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-}
-
-.left-column #side-menu #star-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #star-icon #star-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    opacity:0.7;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/star.svg");
-}
-
-.left-column #side-menu #calendar-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-}
-
-.left-column #side-menu #calendar-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #calendar-icon #calendar-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/calendar.svg");
-}
-
-.left-column #side-menu #user-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-}
-
-.left-column #side-menu #user-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #user-icon #user-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/user.svg");
-}
-
-.left-column #side-menu #home-icon {
-    height: 37px;
-    position: relative;
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-}
-
-.left-column #side-menu #home-icon:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #side-menu #home-icon #home-symbol {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: -0.2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/home.svg");
-}
-
-.new-list {
-   display : flex;
-   color : #3d71e4;
-   height : 37px;
-   padding-left : 17px;
-   cursor : pointer;
-   align-items : center;
-}
-
-.task-count{
-    width: 1rem;
-    height: 1rem;
-    color: #292b35;
-    opacity: 0.7;
-    font-size: 0.7rem;
-}
-
-.task-name {
-    padding-left: 1rem;
-    padding-bottom: 0.5rem;
-}
-
-.list-icon {
-   position: relative;
-   width: 1rem;
-   height: 1rem;
-   left: -0.2rem;
-   top: -0.2rem;
-   opacity:0.9;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-image: url("/assets/images/list.svg");
-}
-
-.left-column  #plus-icon {
-    height: 37px;
-    position: sticky;
-    display: flex;
-    padding-left: 17px;
-    bottom: 0;
-    background-color: white;
-}
-
-.left-column #plus-icon #plus-symbol{
-    position: relative;
-    width: 1.5rem;
-    height: 1rem;
-    left: -0.2rem;
-    top: 0.1rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/plus-symbol.svg");
-} 
-
-.left-column #plus-icon #group-symbol{
-    position: relative;
-    width: 2.5rem;
-    height: 1.5rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/assets/images/list-file.svg");
-}
-
-.left-column #plus-icon #plus-symbol:hover {
-    background-color:white;
-    cursor:pointer;
-}
-
-.left-column #plus-icon a {
-    color:#538cfa;
-    text-decoration:none;
-}
-
-.left-column #plus-icon input {
-    border: none;
-    outline-color: #f4f4f4;
-    background-color: #f4f4f4;
-    padding-bottom: 1rem;
-}
-
-.left-column #plus-icon input:hover {
-    background-color:#f4f4f4;
-}
-
-.left-column #plus-icon .menu-name {
-    line-height: 32px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 13rem
-}
-
-.menu-name {
-    padding-bottom: 0.5rem;
-    padding-left: 12px;
-    display: block;
-    color: #292b35;
-    font-size: 0.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 13rem;
-}
-
-.display-menu {
-    display:block;
-}
-
+    
 .open-left-column-style {
-   width:18.2rem;
-}
+    width:18.2rem;
+ }

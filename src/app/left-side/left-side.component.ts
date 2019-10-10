@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import {tasks, taskType} from '../tasks';
+import {tasks, TaskType} from '../tasks';
 @Component({
   selector: 'app-left-side',
   templateUrl: './left-side.component.html',
@@ -18,7 +18,7 @@ export class LeftSideComponent implements OnInit {
   }
 
   ngOnInit() {
-    const taskInfo: taskType = {taskName: 'Tasks', subTasks: []};
+    const taskInfo: TaskType = {taskName: 'Tasks', subTasks: []};
     tasks.push(taskInfo);
     this.middleContent.currentTask = taskInfo;
   }
@@ -28,7 +28,6 @@ export class LeftSideComponent implements OnInit {
    */
   toggleLeftmenu(): void {
     this.isToggled = !this.isToggled;
-    console.log(tasks);
   }
 
   /**
@@ -96,6 +95,10 @@ export class LeftSideComponent implements OnInit {
     } else {
         return (name + '(' + (count * 1 + 1) + ')');
     }
+  }
+
+  displayDefaultTask(): void {
+    this.middleContent.currentTask = tasks[0];
   }
 
   /**

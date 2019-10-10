@@ -1,4 +1,17 @@
-export type taskType = {taskName: string, subTasks: Array<subTask>};
-export type subTask = {subTaskName: string, isStriked: boolean, steps: Array<step>};
-export type step = {stepName: string, isStriked: boolean};
-export const tasks: Array<taskType> = [];
+export interface TaskType {
+    taskName: string;
+    subTasks: Array<SubTask>;
+}
+
+export interface SubTask {
+    subTaskName: string;
+    isStriked: boolean;
+    steps: Array<Step>;
+}
+
+export interface Step {
+    stepName: string;
+    isStriked: boolean;
+}
+
+export const tasks: Array<TaskType> = [];

@@ -1,7 +1,7 @@
 <div class = "middle-column" id = "middle-column">
     <div div class = "task-bar-container">
         <div class = "task-bar">
-            <input type = "text" id = "task-name" #taskName value = "{{currentTask.taskName}}" (keyup.enter) = "updateTaskName(taskName)"/>
+            <input type = "text" size = "{{currentTask.taskName.length}}" id = "task-name" #taskName value = "{{currentTask.taskName}}" (keyup.enter) = "updateTaskName(taskName)"/>
             <span id = "dot-icon" (click) = "deleteTask()"></span>
         </div>
         <span id = "share-icon"></span>
