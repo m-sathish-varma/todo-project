@@ -14,4 +14,8 @@ export interface Step {
     isStriked: boolean;
 }
 
+export const currentTask: TaskType = {taskName: '', subTasks: []};
+
+export const currentSubTask: SubTask = {subTaskName: '', isStriked: false, steps: []};
+
 export const tasks: Array<TaskType> = [];

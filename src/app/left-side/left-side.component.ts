@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import {tasks, TaskType} from '../tasks';
+import {tasks, TaskType, currentTask} from '../tasks';
 @Component({
   selector: 'app-left-side',
   templateUrl: './left-side.component.html',
@@ -12,6 +12,8 @@ export class LeftSideComponent implements OnInit {
 
   @Input() rightSide;
 
+  currentTask = currentTask;
+
   tasks = tasks;
   isToggled = false;
   constructor() {
@@ -19,8 +21,8 @@ export class LeftSideComponent implements OnInit {
 
   ngOnInit() {
     const taskInfo: TaskType = {taskName: 'Tasks', subTasks: []};
-    tasks.push(taskInfo);
-    this.middleContent.currentTask = taskInfo;
+    this.tasks.push(taskInfo);
+    this.currentTask = taskInfo;
   }
 
   /**
